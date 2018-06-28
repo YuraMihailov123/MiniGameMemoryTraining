@@ -15,13 +15,13 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+            <state relative-caret-position="176">
+              <caret line="19" column="44" lean-forward="true" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1670#1671#0" expanded="true" />
                 <element signature="e#1723#1724#0" expanded="true" />
-                <marker date="1530192623776" expanded="true" signature="505:776" ph="..." />
+                <marker date="1530194191501" expanded="true" signature="494:558" ph="..." />
               </folding>
             </state>
           </provider>
@@ -43,11 +43,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="29" />
-    <option name="y" value="25" />
-    <option name="width" value="1386" />
-    <option name="height" value="688" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
+    <option name="y" value="40" />
+    <option name="width" value="852" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -154,8 +154,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="32" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="40" width="852" height="735" extended-state="0" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -166,11 +165,11 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.44038156" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.44677418" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.067349926" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11004785" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -197,7 +196,7 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1670#1671#0" expanded="true" />
             <element signature="e#1723#1724#0" expanded="true" />
-            <marker date="1530192623776" expanded="true" signature="505:776" ph="..." />
+            <marker date="1530194191501" expanded="true" signature="494:558" ph="..." />
           </folding>
         </state>
       </provider>
@@ -211,13 +210,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        <state relative-caret-position="176">
+          <caret line="19" column="44" lean-forward="true" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1670#1671#0" expanded="true" />
             <element signature="e#1723#1724#0" expanded="true" />
-            <marker date="1530192623776" expanded="true" signature="505:776" ph="..." />
+            <marker date="1530194191501" expanded="true" signature="494:558" ph="..." />
           </folding>
         </state>
       </provider>

@@ -15,10 +15,6 @@ class MyFrame extends JFrame {
         setBounds(400, 0, 650, 680);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(a, b); //положение окна
-//        String path = "icon.jpg";
-//        URL imgUrl = Main.class.getResource(path);
-//        ImageIcon icon = new ImageIcon(imgUrl);
-//        icon = Toolkit.getDefaultToolkit().getImage("com.company/icon.jpg");
         panel.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
         add(panel); //добавление панели
         setVisible(true); //Отображение окна
