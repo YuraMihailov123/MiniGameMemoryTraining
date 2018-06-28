@@ -1,19 +1,16 @@
 package com.company;
-import java.net.URL;
-import java.sql.SQLOutput;
 import  java.util.Scanner;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
-import java.util.concurrent.TimeUnit;
 
 public class Main extends JFrame{
 
     //private String[][] _words;
     private int _buttonPressedNumber;
     boolean isFirst=false;
-    private JLabel _emptyLabel;
+    private JLabel _devLabel,_emptyLabel;
     private JButton[] _buttons=new JButton[64];
     private JButton _gameButton,_alphabetButton,_startButton;
     private  File file;
@@ -21,7 +18,7 @@ public class Main extends JFrame{
     private Main(){
         super("Memory training"); //Заголовок окна
         setResizable(false);
-        setBounds(400, 0, 800, 860);
+        setBounds(400, 0, 806, 880);
 
         /*String path = "icon.jpg";
         URL imgUrl = Main.class.getResource(path);
@@ -34,15 +31,18 @@ public class Main extends JFrame{
         _container.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
 
 
-        _emptyLabel = new JLabel("DMG Group. 2018. recon.97@mail.ru -beta 0.1v.");
-        _emptyLabel.setHorizontalAlignment(JLabel.RIGHT);
+        _devLabel = new JLabel("DMG Group. 2018. recon.97@mail.ru -beta 0.1v.");
+        _devLabel.setHorizontalAlignment(JLabel.LEADING);
+        _emptyLabel = new JLabel();
         _gameButton=new JButton("Игра");
         _alphabetButton=new JButton("Алфавит");
+        _devLabel.setPreferredSize(new Dimension(800,20));
         _gameButton.setPreferredSize(new Dimension(100,30));
         _alphabetButton.setPreferredSize(new Dimension(100,30));
+        _emptyLabel.setPreferredSize(new Dimension(600,30));
         _gameButton.setBackground(Color.WHITE);
         _alphabetButton.setBackground(Color.WHITE);
-        _emptyLabel.setPreferredSize(new Dimension(600,30));
+        _container.add(_devLabel);
         _container.add(_gameButton);
         _container.add(_alphabetButton);
         _container.add(_emptyLabel);
@@ -121,7 +121,7 @@ public class Main extends JFrame{
         while(scan.hasNextLine() && i<32){
             temp1="";
             temp2="";
-           int _temp = SubStringOnParts(str);
+            int _temp = SubStringOnParts(str);
             temp1 = str.substring(0, _temp);
             _buttons[i].setText(temp1);
             temp2 = str.substring(_temp + 1);
@@ -140,7 +140,6 @@ public class Main extends JFrame{
         for (int i = 0; i < str.length(); i++) {
             if(str.charAt(i)==' '){
                 return i;
-                //System.out.println("fuck");
             }
         }
         return 0;
