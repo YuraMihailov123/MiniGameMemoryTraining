@@ -17,8 +17,9 @@ class ActionListenersClass {
     static ActionListener startGame = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             try {
-                rf = new FileReader("src/com/company/file.txt");
+                rf = new FileReader("src/com/company/Data/file.txt");
                 scan = new Scanner(rf);
+                AudioClass.AudioClassCreateClick("click.wav");
             } catch (FileNotFoundException e1) {
                 System.out.println("File not found!");
             }

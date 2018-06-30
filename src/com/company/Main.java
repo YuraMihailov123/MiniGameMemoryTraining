@@ -1,5 +1,6 @@
 package com.company;
 import java.awt.*;
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.io.*;
 import java.util.Scanner;
@@ -36,6 +37,10 @@ public class Main extends JFrame{
         super("Memory training"); //Заголовок окна
         setResizable(false);
         setBounds(400, 0, 800, 860);
+
+        ImageIcon icon = new ImageIcon("src/com/company/iconGame.png");
+        setIconImage(icon.getImage());
+
 
         _container = getContentPane();
         _container.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));

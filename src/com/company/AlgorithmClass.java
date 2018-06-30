@@ -26,6 +26,9 @@ class AlgorithmClass {
             _buttons[_countPairs+32].setText(temp2);
             _buttons[_countPairs].setBackground(Color.WHITE);
             _buttons[_countPairs+32].setBackground(Color.WHITE);
+            AudioClass.clip.stop();
+            AudioClass.AudioClassCreateClick("clickApper.wav");
+
             _countPairs++;
         }
 
@@ -59,6 +62,9 @@ class AlgorithmClass {
             _buttons[i].addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     if(_isGaming) {
+                        AudioClass.clip.stop();
+                        AudioClass.AudioClassCreateClick("click.wav");
+
                         if (!_isFirst) {
                             _isFirst = !_isFirst;
                             _buttonPressedNumber = finalI;
@@ -77,8 +83,9 @@ class AlgorithmClass {
                                     _buttons[finalI].setText("");
                                     _buttons[_buttonPressedNumber].setText("");
                                     ifWas=true;
+                                    AudioClass.clip.stop();
+                                    AudioClass.AudioClassCreateClickAnswer("done.wav");
                                     _scoreLabel.setText("Очки: "+(++_score));
-
                                     break;
                                 }
                             }
@@ -89,6 +96,8 @@ class AlgorithmClass {
                                 _isGaming=false;
                                 timer2[0] = new Timer(1000, listener2);
                                 timer2[0].start();
+                                AudioClass.clip.stop();
+                                AudioClass.AudioClassCreateClickAnswer("incorrect.wav");
                                 _errorLabel.setText("Ошибки: "+ (++_error));
                             }
                             _isFirst = !_isFirst;
