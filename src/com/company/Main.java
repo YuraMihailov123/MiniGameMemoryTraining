@@ -1,101 +1,14 @@
 package com.company;
-import java.net.URL;
-import java.sql.SQLOutput;
-import  java.util.Scanner;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.io.*;
-import java.util.concurrent.TimeUnit;
-
-public class Main extends JFrame{
-
-    //private String[][] _words;
-    private int _buttonPressedNumber;
-    boolean isFirst=false;
-    private JLabel _emptyLabel;
-    private JButton[] _buttons=new JButton[64];
-    private JButton _gameButton,_alphabetButton,_startButton;
-    private  File file;
-    //private JLayeredPane lpane;
-    private Main(){
-        super("Memory training"); //Заголовок окна
-        setResizable(false);
-        setBounds(400, 0, 800, 860);
-
-        /*String path = "icon.jpg";
-        URL imgUrl = Main.class.getResource(path);
-        //icon = Toolkit.getDefaultToolkit().getImage("com.company/icon.jpg");
-        ImageIcon icon = new ImageIcon(imgUrl);
-        */
-        //lpane=new JLayeredPane();
-
-        Container _container = getContentPane();
-        _container.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
-
-
-        _emptyLabel = new JLabel("DMG Group. 2018. recon.97@mail.ru -beta 0.1v.");
-        _emptyLabel.setHorizontalAlignment(JLabel.RIGHT);
-        _gameButton=new JButton("Игра");
-        _alphabetButton=new JButton("Алфавит");
-        _gameButton.setPreferredSize(new Dimension(100,30));
-        _alphabetButton.setPreferredSize(new Dimension(100,30));
-        _gameButton.setBackground(Color.WHITE);
-        _alphabetButton.setBackground(Color.WHITE);
-        _emptyLabel.setPreferredSize(new Dimension(600,30));
         _container.add(_gameButton);
         _container.add(_alphabetButton);
+        _container.add(_scoreLabel);
+        _container.add(_errorLabel);
+        _container.add(_timeLabel);
         _container.add(_emptyLabel);
 
-        /*_gameButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                for (int i = 0; i <64 ; i++) {
-                    _buttons[i].setText("i");
-                    try {
-                        wait(1);
-                    } catch (InterruptedException e1) {
-                        e1.printStackTrace();
-                    }
-                    /*try {
-                        TimeUnit.SECONDS.sleep(1);
-                    } catch (InterruptedException e1) {
-                        e1.printStackTrace();
-                    }
-                }
-            }
-        });*/
 
-        for (int i = 0; i < 64; i++) {
-            //char a = i
-            _buttons[i]=new JButton("");
-            _buttons[i].setBackground(Color.WHITE);
-            _buttons[i].setPreferredSize(new Dimension(100,100));
-            _container.add(_buttons[i]);
-        }
-        //_buttons[0]=_buttons[31];
-        for (int i = 0; i < 64; i++) {
-            int finalI = i;
-            _buttons[i].addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    if(!isFirst) {
-                        isFirst = !isFirst;
-                        _buttonPressedNumber=finalI;
-                        _buttons[finalI].setBackground(Color.YELLOW);
-                    }else if(isFirst && _buttonPressedNumber!=finalI){
-
-                        isFirst=!isFirst;
-                    }else if(_buttonPressedNumber==finalI) {
-                        isFirst=!isFirst;
-                    }
-
-
-                }
-            });
-        }
-
-        GenerateLevel();
-        //_buttons[0]=_buttons[32];
-
+        InitializeButtons();
+        ActionButton();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
