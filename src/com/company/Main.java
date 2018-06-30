@@ -1,7 +1,5 @@
 package com.company;
-<<<<<<< HEAD
 import java.awt.*;
-import javax.sound.sampled.*;
 import javax.swing.*;
 import java.io.*;
 import java.util.Scanner;
@@ -54,8 +52,8 @@ public class Main extends JFrame{
         _gameButton = JButton(_gameButton,"Игра",100,30);
         _alphabetButton = JButton(_alphabetButton,"Алфавит",100,30);
 
-=======
->>>>>>> cc1de276045c576cdf44a1e74eff31d389c194cf
+        _gameButton.addActionListener(startGame);
+
         _container.add(_gameButton);
         _container.add(_alphabetButton);
         _container.add(_scoreLabel);
@@ -69,52 +67,6 @@ public class Main extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    void GenerateLevel(){
-        try{
-            OpenFile();
-
-        }
-        catch (FileNotFoundException e) {
-            System.out.println("File not found!");
-        }
-
-    }
-
-    public void OpenFile()  throws FileNotFoundException {
-        int i=0;
-        String temp1,temp2;
-        FileReader rf = new FileReader("src/com/company/file.txt");
-        Scanner scan = new Scanner(rf);
-        String str="";
-        str = scan.nextLine();
-        //for (int i = 0; i < 32; i++) {
-        while(scan.hasNextLine() && i<32){
-            temp1="";
-            temp2="";
-           int _temp = SubStringOnParts(str);
-            temp1 = str.substring(0, _temp);
-            _buttons[i].setText(temp1);
-            temp2 = str.substring(_temp + 1);
-            _buttons[i+32].setText(temp2);
-
-            str = scan.nextLine();
-            //System.out.println(scan.hasNextLine());
-            i++;
-
-        }
-        //rf.close();
-    }
-
-    int SubStringOnParts(String str){
-        //String temp="";
-        for (int i = 0; i < str.length(); i++) {
-            if(str.charAt(i)==' '){
-                return i;
-                //System.out.println("fuck");
-            }
-        }
-        return 0;
-    }
 
     public static void main(String[] args) {
 
