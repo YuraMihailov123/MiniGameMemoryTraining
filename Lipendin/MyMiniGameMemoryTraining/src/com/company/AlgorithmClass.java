@@ -85,8 +85,21 @@ class AlgorithmClass {
                         if (!_isFirst) {
                             _isFirst = !_isFirst;
                             _buttonPressedNumber = finalI;
+                            if (_buttons[finalI].getBackground() == Color.CYAN){
+                                for (int j = 0; j < _buttons.length; j++){
+                                    if (_buttons[j].getBackground() == Color.CYAN)
+                                        _buttons[j].setEnabled(false);
+                                }
+                            }
+                            else if (_buttons[finalI].getBackground() == Color.WHITE) {
+                                for (int j = 0; j < _buttons.length; j++) {
+                                    if (_buttons[j].getBackground() == Color.WHITE)
+                                        _buttons[j].setEnabled(false);
+                                }
+                            }
                             _buttons[finalI].setBackground(Color.YELLOW);
-                        } else if (_isFirst && _buttonPressedNumber != finalI) {
+                        }
+                        else if (_isFirst && _buttonPressedNumber != finalI) {
                             String temp1, temp2;
                             temp1 = _buttons[finalI].getText() + " " + _buttons[_buttonPressedNumber].getText();
                             temp2 = _buttons[_buttonPressedNumber].getText() + " " + _buttons[finalI].getText();
@@ -95,6 +108,8 @@ class AlgorithmClass {
                                 if (_pairs[j].equals(temp2) || _pairs[j].equals(temp1)) {
                                     _buttons[finalI].setBackground(Color.GREEN);
                                     _buttons[_buttonPressedNumber].setBackground(Color.GREEN);
+                                    for (int i = 0; i < _buttons.length; i++)
+                                        _buttons[i].setEnabled(true);
                                     _buttons[finalI].setEnabled(false);
                                     _buttons[_buttonPressedNumber].setEnabled(false);
                                     _buttons[finalI].setText("");
@@ -107,11 +122,10 @@ class AlgorithmClass {
                                 }
                             }
                             if(!ifWas){
-                                /*String[] errorPairs = new String[2];
-                                errorPairs[0] = _buttons[_buttonPressedNumber].getText();
-                                errorPairs[1] = _buttons[_buttonNumberBackToWhite].getText();*/
                                 _buttons[_buttonPressedNumber].setBackground(Color.RED);
                                 _buttons[finalI].setBackground(Color.RED);
+                                for (int i = 0; i < _buttons.length; i++)
+                                    _buttons[i].setEnabled(true);
                                 _buttonNumberBackToWhite=finalI;
                                 _isGaming=false;
                                 timer2[0] = new Timer(1000, backToDefaultColor);
@@ -121,11 +135,11 @@ class AlgorithmClass {
                                 _errorLabel.setText("Ошибки: "+ (++_error));
                             }
                             _isFirst = !_isFirst;
-                        } else {
+                        }
+                        else {
                             _buttons[finalI].setBackground(Color.WHITE);
                             _isFirst = !_isFirst;
                         }
-
                     }
                 }
             });

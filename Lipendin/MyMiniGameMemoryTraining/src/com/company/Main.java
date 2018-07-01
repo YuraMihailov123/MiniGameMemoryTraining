@@ -16,21 +16,21 @@ public class Main extends JFrame{
     */
     static String[] _pairs = new String[32];
     static String[] _baseLanguageWords = new String[32];
-    static int _buttonPressedNumber, _iterator =0,_countPairs=0, _buttonNumberBackToWhite;
-    static boolean _isFirst =false,_isGaming=false;
+    static int _buttonPressedNumber, _iterator, _countPairs, _buttonNumberBackToWhite;
+    static boolean _isFirst, _isGaming;
     static JLabel _timeLabel;
     static JLabel _emptyLabel;
     static JLabel _scoreLabel;
     static JLabel _errorLabel;
     static JButton[] _buttons=new JButton[64];
     private static JButton _gameButton, _saveErrorButton;
-    static int _score=0,_error=0;
+    static int _score, _error;
     static FileReader infile;
     static FileWriter outfile1;
     static FileWriter outfile2;
     static Scanner scan;
     static Container _container;
-    static int[] timerGame = {0,0,0};
+    static int[] timerGame = {0, 0, 0};
     static final Timer[] timer = new Timer[1];
     static final Timer[] timer3 = new Timer[1];
     static final Timer[] timer2= new Timer[1];
