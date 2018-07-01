@@ -4,63 +4,86 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Scanner;
 
-import static com.company.AlgorithmClass.OpenFile;
-import static com.company.AlgorithmClass.RandomizeLocationButtons;
+import static com.company.AlgorithmClass.*;
 import static com.company.Main.*;
 
 class ActionListenersClass {
 
-    static ActionListener startGame = new ActionListener() {
+    static ActionListener randomizeWords = new ActionListener() {
+        @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                rf = new FileReader("src/com/company/Data/file.txt");
-                scan = new Scanner(rf);
-                AudioClass.AudioClassCreateClick("click.wav");
-            } catch (FileNotFoundException e1) {
-                System.out.println("File not found!");
-            }
-
-            timer[0] = new Timer(100, listener);
-            timer[0].start();
-
+            RandomizeLocationButtons();
         }
     };
 
-    static ActionListener listener = new ActionListener() {
+    static ActionListener delayBeforeLoad = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(_iterator <32) {
-               OpenFile();
+            for (int i = 0; i < _buttons.length; i++) {
+                _buttons[i].setEnabled(true);
+            }
+            _isGaming=true;
+            BackToWhiteColor();
+            RandomizeLocationButtons();
+            BaseLanguageWordsColoring();
+            timer3[0] = new Timer(1000, gameTimer);
+            timer3[0].start();
+            //System.out.println("done Job");
+            //timer4[0].stop();
+        }
+    };
+
+    static ActionListener importWordsIntoGame = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(_iterator <_buttons.length/2) {
+               GetPairsAndDivideThem();
                 _iterator++;
             }else {
                 timer[0].stop();
-                for (int i = 0; i < 64; i++) {
-                    _buttons[i].setEnabled(true);
+
+
+                if(_startWithRandomisize) {
+                    for (int i = 0; i < _buttons.length; i++) {
+                        _buttons[i].setEnabled(true);
+                    }
+                    _isGaming=true;
+                    RandomizeLocationButtons();
+                    BaseLanguageWordsColoring();
+                    timer3[0] = new Timer(1000, gameTimer);
+                    timer3[0].start();
                 }
-                _isGaming=true;
-                RandomizeLocationButtons();
-                timer3[0] = new Timer(1000,listener3);
-                timer3[0].start();
+                else {
+                    BaseLanguageWordsColoring();
+                    //timer4[0]= new Timer(20000,delayBeforeLoad);
+                    //timer4[0].start();
+                }
+
             }
 
         }
     };
 
-    static ActionListener listener2 = new ActionListener() {
+    static ActionListener backToDefaultColor = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            _buttons[_buttonNumberBackToWhite].setBackground(Color.WHITE);
-            _buttons[_buttonPressedNumber].setBackground(Color.WHITE);
+            for (int i = 0; i < _baseLanguageWords.length; i++) {
+                if (_buttons[_buttonNumberBackToWhite].getText().equals(_baseLanguageWords[i]))
+                    _buttons[_buttonNumberBackToWhite].setBackground(Color.CYAN);
+                else if  (_buttons[_buttonPressedNumber].getText().equals(_baseLanguageWords[i]))
+                    _buttons[_buttonPressedNumber].setBackground(Color.CYAN);
+            }
+            if (_buttons[_buttonNumberBackToWhite].getBackground()== Color.RED)
+                _buttons[_buttonNumberBackToWhite].setBackground(Color.WHITE);
+            if (_buttons[_buttonPressedNumber].getBackground()== Color.RED)
+                _buttons[_buttonPressedNumber].setBackground(Color.WHITE);
             _isGaming=true;
             timer2[0].stop();
         }
     };
 
-    static ActionListener listener3 = new ActionListener() {
+    static ActionListener gameTimer = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             //00 00 00

@@ -6,34 +6,44 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-import static com.company.ActionListenersClass.listener2;
+import static com.company.ActionListenersClass.backToDefaultColor;
 import static com.company.Main.*;
 
 class AlgorithmClass {
 
-    static void OpenFile() {
+    static void CheckIfWin(){
+        int count=0;
+        for (int i = 0; i < _buttons.length; i++) {
+            if(!_buttons[i].isEnabled()) count++;
+        }
+        if(count==_buttons.length) System.out.println("You win!");
+    }
+
+    static void GetPairsAndDivideThem() {
         String temp1,temp2;
         String str="";
         str = scan.nextLine();
         _pairs[_countPairs] = str;
-        if(scan.hasNextLine() && _countPairs<32){
+        if(scan.hasNextLine() && _countPairs<_buttons.length/2){
             temp1="";
             temp2="";
-            int _temp = SubStringOnParts(str);
+            int _temp = GetSpaceInString(str);
             temp1 = str.substring(0, _temp);
+            _baseLanguageWords[_countPairs] = temp1;
             _buttons[_countPairs].setText(temp1);
             temp2 = str.substring(_temp + 1);
-            _buttons[_countPairs+32].setText(temp2);
+            //_baseLanguageWords2[_countPairs] = temp2;
+            _buttons[_countPairs+_buttons.length/2].setText(temp2);
             _buttons[_countPairs].setBackground(Color.WHITE);
-            _buttons[_countPairs+32].setBackground(Color.WHITE);
-            AudioClass.clip.stop();
+            _buttons[_countPairs+_buttons.length/2].setBackground(Color.WHITE);
+
             AudioClass.AudioClassCreateClick("clickApper.wav");
 
             _countPairs++;
         }
 
     }
-    private static int SubStringOnParts(String str){
+    private static int GetSpaceInString(String str){
         for (int i = 0; i < str.length(); i++) {
             if(str.charAt(i)==' '){
                 return i;
@@ -42,12 +52,12 @@ class AlgorithmClass {
         return 0;
     }
     static void RandomizeLocationButtons(){
-        for (int i = 0; i < 64; i++) {
+        for (int i = 0; i < _buttons.length; i++) {
             Random random = new Random();
-            int num = random.nextInt(64);
+            int num = random.nextInt(_buttons.length);
             System.out.println(num);
             while(i==num) {
-                num = random.nextInt(64);
+                num = random.nextInt(_buttons.length);
             }
             String temp = _buttons[i].getText();
             _buttons[i].setText(_buttons[num].getText());
@@ -55,21 +65,36 @@ class AlgorithmClass {
         }
     }
 
+    static void BaseLanguageWordsColoring(){
+        for (int i = 0; i < _buttons.length; i++) {
+            for (int j = 0; j < _baseLanguageWords.length; j++) {
+                if (_buttons[i].getText().equals(_baseLanguageWords[j]))
+                    _buttons[i].setBackground(Color.CYAN);
+            }
+        }
+    }
+
+    static void BackToWhiteColor(){
+        for (int i = 0; i < _buttons.length; i++) {
+            _buttons[i].setBackground(Color.WHITE);
+        }
+    }
+
+
     static void ActionButton(){
-        for (int i = 0; i < 64; i++) {
+        for (int i = 0; i < _buttons.length; i++) {
 
             int finalI = i;
             _buttons[i].addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     if(_isGaming) {
-                        AudioClass.clip.stop();
                         AudioClass.AudioClassCreateClick("click.wav");
 
                         if (!_isFirst) {
                             _isFirst = !_isFirst;
                             _buttonPressedNumber = finalI;
                             _buttons[finalI].setBackground(Color.YELLOW);
-                        } else if (_isFirst && _buttonPressedNumber != finalI) {
+                        } else if (_isFirst && _buttonPressedNumber != finalI ) {
                             String temp1, temp2;
                             temp1 = _buttons[finalI].getText() + " " + _buttons[_buttonPressedNumber].getText();
                             temp2 = _buttons[_buttonPressedNumber].getText() + " " + _buttons[finalI].getText();
@@ -83,9 +108,11 @@ class AlgorithmClass {
                                     _buttons[finalI].setText("");
                                     _buttons[_buttonPressedNumber].setText("");
                                     ifWas=true;
-                                    AudioClass.clip.stop();
-                                    AudioClass.AudioClassCreateClickAnswer("done.wav");
+
+                                    //AudioClass.AudioClassCreateClick("done.wav");
+
                                     _scoreLabel.setText("Очки: "+(++_score));
+                                    CheckIfWin();
                                     break;
                                 }
                             }
@@ -94,10 +121,10 @@ class AlgorithmClass {
                                 _buttons[finalI].setBackground(Color.RED);
                                 _buttonNumberBackToWhite=finalI;
                                 _isGaming=false;
-                                timer2[0] = new Timer(1000, listener2);
+                                timer2[0] = new Timer(1000, backToDefaultColor);
                                 timer2[0].start();
-                                AudioClass.clip.stop();
-                                AudioClass.AudioClassCreateClickAnswer("incorrect.wav");
+
+                                //AudioClass.AudioClassCreateClick("incorrect.wav");
                                 _errorLabel.setText("Ошибки: "+ (++_error));
                             }
                             _isFirst = !_isFirst;

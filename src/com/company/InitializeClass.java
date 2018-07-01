@@ -6,13 +6,13 @@ import static com.company.Main.*;
 class InitializeClass {
 
     static void InitializeButtons(){
-        for (int i = 0; i < 64; i++) {
+        for (int i = 0; i < _buttons.length; i++) {
             _buttons[i]=new JButton("");
             _buttons[i].setFocusPainted(false);
             _buttons[i].setBackground(Color.GREEN);
             _buttons[i].setEnabled(false);
-            _buttons[i].setPreferredSize(new Dimension(100,100));
-            _container.add(_buttons[i]);
+            _buttons[i].setPreferredSize(new Dimension(_sizeSquare_x,_sizeSquare_y));
+            panelButton.add(_buttons[i]);
         }
     }
 
