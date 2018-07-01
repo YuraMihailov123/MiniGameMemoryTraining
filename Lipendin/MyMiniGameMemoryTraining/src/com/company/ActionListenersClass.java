@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 import static com.company.AlgorithmClass.BaseLanguageWordsColoring;
@@ -18,16 +20,41 @@ class ActionListenersClass {
     static ActionListener startGame = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             try {
-                rf = new FileReader("src/com/company/Data/file.txt");
-                scan = new Scanner(rf);
+                infile = new FileReader("src/com/company/Data/file.txt");
+                scan = new Scanner(infile);
                 AudioClass.AudioClassCreateClick("click.wav");
-            } catch (FileNotFoundException e1) {
-                System.out.println("File not found!");
+
+                timer[0] = new Timer(100, importWordsIntoGame);
+                timer[0].start();
+            }
+            catch (FileNotFoundException e1) {
+                e1.printStackTrace();
             }
 
-            timer[0] = new Timer(100, importWordsIntoGame);
-            timer[0].start();
-
+        }
+    };
+    static ActionListener addPairsToErrorLists = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                outfile1 = new FileWriter("src/com/company/Data/error_list1.txt", true);
+                outfile2 = new FileWriter("src/com/company/Data/error_list2.txt", true);
+                String[] errorPair = new String[2];
+                errorPair[0] = _buttons[_buttonPressedNumber].getText();
+                errorPair[1] = _buttons[_buttonNumberBackToWhite].getText();
+                for (int i = 0; i < _pairs.length; i++) {
+                    if (_pairs[i].contains(errorPair[0])) {
+                        outfile1.write(_pairs[i] + "\n");
+                        outfile1.flush();
+                    }
+                    if (_pairs[i].contains(errorPair[1])) {
+                        outfile2.write(_pairs[i] + "\n");
+                        outfile2.flush();
+                    }
+                }
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
     };
 

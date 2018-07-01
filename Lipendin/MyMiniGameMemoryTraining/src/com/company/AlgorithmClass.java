@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 
 import static com.company.ActionListenersClass.backToDefaultColor;
@@ -60,6 +62,15 @@ class AlgorithmClass {
             }
         }
     }
+    static void InitializeOutfile(FileWriter outfile, String fileName) {
+        try {
+            outfile = new FileWriter("src/com/company/Data/" + fileName);
+            outfile.write("");
+        }
+        catch(IOException e1) {
+            e1.printStackTrace();
+        }
+    }
 
     static void ActionButton(){
         for (int i = 0; i < _buttons.length; i++) {
@@ -96,6 +107,9 @@ class AlgorithmClass {
                                 }
                             }
                             if(!ifWas){
+                                /*String[] errorPairs = new String[2];
+                                errorPairs[0] = _buttons[_buttonPressedNumber].getText();
+                                errorPairs[1] = _buttons[_buttonNumberBackToWhite].getText();*/
                                 _buttons[_buttonPressedNumber].setBackground(Color.RED);
                                 _buttons[finalI].setBackground(Color.RED);
                                 _buttonNumberBackToWhite=finalI;

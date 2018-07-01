@@ -23,10 +23,11 @@ public class Main extends JFrame{
     static JLabel _scoreLabel;
     static JLabel _errorLabel;
     static JButton[] _buttons=new JButton[64];
-    private static JButton _gameButton,_alphabetButton;
+    private static JButton _gameButton, _saveErrorButton;
     static int _score=0,_error=0;
-    public static File file;
-    static FileReader rf;
+    static FileReader infile;
+    static FileWriter outfile1;
+    static FileWriter outfile2;
     static Scanner scan;
     static Container _container;
     static int[] timerGame = {0,0,0};
@@ -41,7 +42,6 @@ public class Main extends JFrame{
         ImageIcon icon = new ImageIcon("src/com/company/iconGame.png");
         setIconImage(icon.getImage());
 
-
         _container = getContentPane();
         _container.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
 
@@ -51,18 +51,20 @@ public class Main extends JFrame{
         _timeLabel = JLabel(_timeLabel,"Время: ",0,100,30);
 
         _gameButton = JButton(_gameButton,"Игра",100,30);
-        _alphabetButton = JButton(_alphabetButton,"Алфавит",100,30);
+        _saveErrorButton = JButton(_saveErrorButton,"Сохранить ошибку",100,30);
 
         _gameButton.addActionListener(startGame);
+        _saveErrorButton.addActionListener(addPairsToErrorLists);
 
         _container.add(_gameButton);
-        _container.add(_alphabetButton);
+        _container.add(_saveErrorButton);
         _container.add(_scoreLabel);
         _container.add(_errorLabel);
         _container.add(_timeLabel);
         _container.add(_emptyLabel);
 
-
+        InitializeOutfile(outfile1, "error_list1.txt");
+        InitializeOutfile(outfile2, "error_list2.txt");
         InitializeButtons();
         ActionButton();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
