@@ -3,33 +3,7 @@ mother мать
 son  сын
 car машина
 football футбол
-cup кубок
-tea чай
-dog собака
-cat кошка
-cow корова
-key ключ
-bag сумка
-saw пила
-wish желание
-dream мечта
-sport спорт
-ham ветчина
-fish рыба
-pair пара
-cheese сыр
-block блок
-error ошибка
-step шаг
-plan план
-choice выбор
-boy мальчик
-girl девочка
-plot сюжет
-director режиссер
-elevator лифт
-floor пол
-door дверь
-
-
+onion лук
+bow лук
+entertainment развлечение
 

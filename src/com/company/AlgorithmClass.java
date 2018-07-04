@@ -4,26 +4,61 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Random;
+import java.util.Scanner;
 
 import static com.company.ActionListenersClass.backToDefaultColor;
+import static com.company.ActionListenersClass.importWordsIntoGame;
 import static com.company.Main.*;
 
 class AlgorithmClass {
+
+    static void CheckIfButtonEmpty(){
+        for (int i = 0; i < _buttons.length; i++) {
+            if(_buttons[i].getText().equals("")){
+                _buttons[i].setBackground(Color.GREEN);
+                _buttons[i].setEnabled(false);
+
+            }
+        }
+    }
 
     static void CheckIfWin(){
         int count=0;
         for (int i = 0; i < _buttons.length; i++) {
             if(!_buttons[i].isEnabled()) count++;
         }
-        if(count==_buttons.length) System.out.println("You win!");
+        if(count==_buttons.length) {
+            _isWon=!_isWon;
+            BackToWhiteColor();
+            System.out.println("You win!");
+
+            //if(_isRestatr) {
+                timer[0] = new Timer(100, importWordsIntoGame);
+                timer[0].start();
+            //}
+
+
+        }
     }
 
     static void GetPairsAndDivideThem() {
+        if(_isWon) {
+            _countPairs = 0;
+            _isWon=!_isWon;
+        }
         String temp1,temp2;
         String str="";
+        if(!scan.hasNextLine()){
+            timer3[0].stop();
+            DialogClass winDialog = new DialogClass(_mainFrame,!_isWon,"Результат");
+            winDialog.setVisible(true);
+        }
         str = scan.nextLine();
         _pairs[_countPairs] = str;
+
         if(scan.hasNextLine() && _countPairs<_buttons.length/2){
             temp1="";
             temp2="";
@@ -55,7 +90,7 @@ class AlgorithmClass {
         for (int i = 0; i < _buttons.length; i++) {
             Random random = new Random();
             int num = random.nextInt(_buttons.length);
-            System.out.println(num);
+            //System.out.println(num);
             while(i==num) {
                 num = random.nextInt(_buttons.length);
             }
@@ -69,7 +104,7 @@ class AlgorithmClass {
         for (int i = 0; i < _buttons.length; i++) {
             for (int j = 0; j < _baseLanguageWords.length; j++) {
                 if (_buttons[i].getText().equals(_baseLanguageWords[j]))
-                    _buttons[i].setBackground(Color.CYAN);
+                    _buttons[i].setBackground(Color.LIGHT_GRAY);
             }
         }
     }
@@ -93,7 +128,21 @@ class AlgorithmClass {
                         if (!_isFirst) {
                             _isFirst = !_isFirst;
                             _buttonPressedNumber = finalI;
+
+                            if (_buttons[finalI].getBackground() == Color.LIGHT_GRAY){
+                                for (int j = 0; j < _buttons.length; j++){
+                                    if (_buttons[j].getBackground() == Color.LIGHT_GRAY)
+                                        _buttons[j].setEnabled(false);
+                                }
+                            }
+                            else if (_buttons[finalI].getBackground() == Color.WHITE) {
+                                for (int j = 0; j < _buttons.length; j++) {
+                                    if (_buttons[j].getBackground() == Color.WHITE)
+                                        _buttons[j].setEnabled(false);
+                                }
+                            }
                             _buttons[finalI].setBackground(Color.YELLOW);
+                            _buttons[_buttonPressedNumber].setEnabled(true);
                         } else if (_isFirst && _buttonPressedNumber != finalI ) {
                             String temp1, temp2;
                             temp1 = _buttons[finalI].getText() + " " + _buttons[_buttonPressedNumber].getText();
@@ -103,6 +152,10 @@ class AlgorithmClass {
                                 if (_pairs[j].equals(temp2) || _pairs[j].equals(temp1)) {
                                     _buttons[finalI].setBackground(Color.GREEN);
                                     _buttons[_buttonPressedNumber].setBackground(Color.GREEN);
+                                    for (int i = 0; i < _buttons.length; i++) {
+                                        if(_buttons[i].getBackground()!=Color.GREEN)
+                                        _buttons[i].setEnabled(true);
+                                    }
                                     _buttons[finalI].setEnabled(false);
                                     _buttons[_buttonPressedNumber].setEnabled(false);
                                     _buttons[finalI].setText("");
@@ -111,7 +164,7 @@ class AlgorithmClass {
 
                                     //AudioClass.AudioClassCreateClick("done.wav");
 
-                                    _scoreLabel.setText("Очки: "+(++_score));
+                                    _scoreLabel.setText("+: "+(++_score));
                                     CheckIfWin();
                                     break;
                                 }
@@ -119,17 +172,41 @@ class AlgorithmClass {
                             if(!ifWas){
                                 _buttons[_buttonPressedNumber].setBackground(Color.RED);
                                 _buttons[finalI].setBackground(Color.RED);
+                                for (int i = 0; i < _buttons.length; i++){
+                                    if(_buttons[i].getBackground()!=Color.GREEN)
+                                        _buttons[i].setEnabled(true);
+                                }
                                 _buttonNumberBackToWhite=finalI;
                                 _isGaming=false;
                                 timer2[0] = new Timer(1000, backToDefaultColor);
                                 timer2[0].start();
 
                                 //AudioClass.AudioClassCreateClick("incorrect.wav");
-                                _errorLabel.setText("Ошибки: "+ (++_error));
+                                _errorLabel.setText("-: "+ (++_error));
                             }
                             _isFirst = !_isFirst;
-                        } else {
-                            _buttons[finalI].setBackground(Color.WHITE);
+                        } else if(_buttonPressedNumber==finalI){
+                            boolean _isForeign=true;
+                            for (int i = 0; i < _baseLanguageWords.length; i++) {
+                                if (_buttons[finalI].getText().equals(_baseLanguageWords[i])) {
+                                    _buttons[finalI].setBackground(Color.LIGHT_GRAY);
+                                    _isForeign=false;
+                                    //break;
+                                }
+
+                            }
+                            if(_isForeign)_buttons[finalI].setBackground(Color.WHITE);
+                            /*if (_buttons[finalI].getBackground()== Color.RED)
+                                _buttons[finalI].setBackground(Color.WHITE);
+                            if (_buttons[_buttonPressedNumber].getBackground()== Color.RED)
+                                _buttons[_buttonPressedNumber].setBackground(Color.WHITE);
+                            */
+                            for (int i = 0; i < _buttons.length; i++) {
+                                if(_buttons[i].getBackground()!=Color.GREEN)
+                                    _buttons[i].setEnabled(true);
+                            }
+                            //_buttons[_buttonPressedNumber].setEnabled(true);
+                            //_buttons[finalI].setBackground(Color.WHITE);
                             _isFirst = !_isFirst;
                         }
 

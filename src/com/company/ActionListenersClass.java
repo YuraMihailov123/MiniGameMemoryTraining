@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import static com.company.AlgorithmClass.*;
 import static com.company.Main.*;
@@ -26,22 +28,32 @@ class ActionListenersClass {
             _isGaming=true;
             BackToWhiteColor();
             RandomizeLocationButtons();
+            CheckIfButtonEmpty();
+
             BaseLanguageWordsColoring();
-            timer3[0] = new Timer(1000, gameTimer);
-            timer3[0].start();
-            //System.out.println("done Job");
-            //timer4[0].stop();
+            if(!_isRestatr) {
+                timer3[0] = new Timer(1000, gameTimer);
+                timer3[0].start();
+                _isRestatr=!_isRestatr;
+            }
         }
     };
 
     static ActionListener importWordsIntoGame = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            if(_isWon) {
+                _iterator = 0;
+                //_isWon=!_isWon;
+            }
+            System.out.println("---"+_iterator);
             if(_iterator <_buttons.length/2) {
-               GetPairsAndDivideThem();
+                System.out.println("+++"+_iterator);
+                System.out.println("");
+                GetPairsAndDivideThem();
                 _iterator++;
             }else {
-                timer[0].stop();
+               timer[0].stop();
 
 
                 if(_startWithRandomisize) {
@@ -50,18 +62,54 @@ class ActionListenersClass {
                     }
                     _isGaming=true;
                     RandomizeLocationButtons();
+                    CheckIfButtonEmpty();
                     BaseLanguageWordsColoring();
-                    timer3[0] = new Timer(1000, gameTimer);
-                    timer3[0].start();
+                    if(!_isRestatr) {
+                        timer3[0] = new Timer(1000, gameTimer);
+                        timer3[0].start();
+                        _isRestatr=!_isRestatr;
+                    }
                 }
                 else {
                     BaseLanguageWordsColoring();
+                    CheckIfButtonEmpty();
                     //timer4[0]= new Timer(20000,delayBeforeLoad);
                     //timer4[0].start();
                 }
 
             }
 
+
+
+        }
+    };
+
+    static ActionListener addPairsToErrorLists = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                if(_error>0) {
+                    outfile1 = new FileWriter("src/com/company/Data/error_list1.txt", true);
+                    outfile2 = new FileWriter("src/com/company/Data/error_list2.txt", true);
+                    String[] errorPair = new String[2];
+                    errorPair[0] = _buttons[_buttonPressedNumber].getText();
+                    errorPair[1] = _buttons[_buttonNumberBackToWhite].getText();
+                    if (!errorPair[0].equals("")) {
+                        for (int i = 0; i < _pairs.length; i++) {
+                            if (_pairs[i].contains(errorPair[0])) {
+                                outfile1.write(_pairs[i] + "\n");
+                                outfile1.flush();
+                            }
+                            if (_pairs[i].contains(errorPair[1])) {
+                                outfile2.write(_pairs[i] + "\n");
+                                outfile2.flush();
+                            }
+                        }
+                    }
+                }
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
     };
 
@@ -70,9 +118,9 @@ class ActionListenersClass {
         public void actionPerformed(ActionEvent e) {
             for (int i = 0; i < _baseLanguageWords.length; i++) {
                 if (_buttons[_buttonNumberBackToWhite].getText().equals(_baseLanguageWords[i]))
-                    _buttons[_buttonNumberBackToWhite].setBackground(Color.CYAN);
+                    _buttons[_buttonNumberBackToWhite].setBackground(Color.LIGHT_GRAY);
                 else if  (_buttons[_buttonPressedNumber].getText().equals(_baseLanguageWords[i]))
-                    _buttons[_buttonPressedNumber].setBackground(Color.CYAN);
+                    _buttons[_buttonPressedNumber].setBackground(Color.LIGHT_GRAY);
             }
             if (_buttons[_buttonNumberBackToWhite].getBackground()== Color.RED)
                 _buttons[_buttonNumberBackToWhite].setBackground(Color.WHITE);
