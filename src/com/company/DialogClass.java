@@ -37,14 +37,19 @@ class DialogClass extends JDialog {
             _label.setForeground(Color.RED);
             _label2.setForeground(Color.RED);
             _label3.setForeground(Color.RED);
+            _sizeSquare_x=100;
+            _sizeSquare_y=100;
+            _size_x=6;
+            _size_y=6;
 
+            _numSquareX.setText("100");
+            _numSquareY.setText("100");
+            _numY.setText("6");
+            _numX.setText("6");
             _loadLevel.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    _sizeSquare_x=0;
-                    _sizeSquare_y=0;
-                    _size_x=0;
-                    _size_y=0;
+
                     if (!_numSquareX.getText().equals("")) {
                         _sizeSquare_x = Integer.parseInt(_numSquareX.getText());
                     }
@@ -73,7 +78,6 @@ class DialogClass extends JDialog {
                         }
                         _buttons=new JButton[_size_x*_size_y];
                         _pairs = new String[_size_x*_size_y/2];
-                        _baseLanguageWords = new String[_size_x*_size_y/2];
                         panelButton=new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
                         panelButton.setPreferredSize(new Dimension(_size_x*_sizeSquare_x,_size_y*_sizeSquare_y));
                         InitializeButtons();
@@ -129,22 +133,7 @@ class DialogClass extends JDialog {
                     //app2.setVisible(true);
                     app =new Main();
                     app.setVisible(true);
-                    /*_isWon=!_isWon;
-                    try {
-                        rf = new FileReader("src/com/company/Data/file.txt");
-                        scan = new Scanner(rf);
-                        AudioClass.AudioClassCreateClick("click.wav");
-                    } catch (FileNotFoundException e1) {
-                        System.out.println("File not found!");
-                    }
-                    panelButton.removeAll();
-                    //_iterator=0;
-                    _isRestatr=true;
-                    //revalidate();
-                    //repaint();
-                    DialogClass _newGameAction = new DialogClass(_mainFrame,!_isWon,"Настройка игры");
-                    _newGameAction.setVisible(true);
-                    setVisible(false);*/
+
                 }
             };
             _restart.addActionListener(_newGame);

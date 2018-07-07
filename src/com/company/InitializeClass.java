@@ -40,10 +40,15 @@ class InitializeClass {
         return label;
     }
     static void DeleteData(){
+        _sizeSquare_x=0;
+        _sizeSquare_y=0;
+        _size_x=0;
+        _size_y=0;
         _iterator =0;
         _countPairs=0;
-
+        _canWeShuffle=true;
         _isFirst =false;
+        _ifWas=false;
         _isGaming=false;
         _startWithRandomisize=false;_isWon =false;
         _isRestatr=false;
@@ -56,4 +61,23 @@ class InitializeClass {
         timer3[0].stop();
 
     }
+}
+class CustomJToolTip extends JToolTip{
+    public CustomJToolTip(JComponent c){
+        super();
+        setComponent(c);
+        setBackground(Color.WHITE);
+        setForeground(Color.RED);
+    }
+}
+
+class MyBytton extends JButton{
+    public MyBytton(String text){
+        super(text);
+    }
+     @Override
+        public JToolTip createToolTip(){
+            return(new CustomJToolTip(this));
+        }
+
 }

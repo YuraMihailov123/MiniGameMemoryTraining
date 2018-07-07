@@ -3,18 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="6c55ef6c-9d34-4d26-b292-6246722e7c71" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/ActionListenersClass.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/AlgorithmClass$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaCourse/com/company/AlgorithmClass$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/AlgorithmClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaCourse/com/company/AlgorithmClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/Data/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaCourse/com/company/Data/file.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/DialogClass$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaCourse/com/company/DialogClass$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/DialogClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaCourse/com/company/DialogClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/InitializeClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaCourse/com/company/InitializeClass.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaCourse/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaCourse/com/company/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/ActionListenersClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ActionListenersClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/AlgorithmClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/AlgorithmClass.java" afterDir="false" />
@@ -22,6 +18,7 @@
       <change beforePath="$PROJECT_DIR$/src/com/company/DialogClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/DialogClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/InitializeClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/InitializeClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/iconGame.png" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,10 +33,11 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+            <state relative-caret-position="263">
+              <caret line="112" column="10" selection-start-line="112" selection-start-column="10" selection-end-line="112" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#947#955#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,10 +46,14 @@
       <file leaf-file-name="InitializeClass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/InitializeClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+            <state relative-caret-position="818">
+              <caret line="69" column="22" lean-forward="true" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2042#2043#0" expanded="true" />
+                <element signature="e#2062#2063#0" expanded="true" />
+                <element signature="e#2133#2134#0" expanded="true" />
+                <element signature="e#2185#2186#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,7 +62,7 @@
       <file leaf-file-name="AudioClass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/AudioClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="248">
               <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -72,29 +74,8 @@
       <file leaf-file-name="ActionListenersClass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/ActionListenersClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="file.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Data/file.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DialogClass.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/DialogClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+            <state relative-caret-position="259">
+              <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -105,8 +86,29 @@
       <file leaf-file-name="AlgorithmClass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/AlgorithmClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1455">
-              <caret line="108" column="9" selection-start-line="108" selection-start-column="9" selection-end-line="108" selection-end-column="9" />
+            <state relative-caret-position="293">
+              <caret line="259" column="53" lean-forward="true" selection-start-line="259" selection-start-column="53" selection-end-line="259" selection-end-column="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="file.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Data/file.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DialogClass.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/DialogClass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="80" column="23" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -128,6 +130,12 @@
       <find>shuf</find>
       <find>word</find>
       <find>timer[0]</find>
+      <find>Light_gray</find>
+      <find>Color.Light_gray</find>
+      <find>new Color(174,204,235)</find>
+      <find>-</find>
+      <find>_game</find>
+      <find>_gameButton</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -141,20 +149,19 @@
         <option value="$PROJECT_DIR$/src/com/company/AudioClass.java" />
         <option value="$PROJECT_DIR$/src/com/company/Data/error_list1.txt" />
         <option value="$PROJECT_DIR$/src/com/company/Data/error_list2.txt" />
+        <option value="$PROJECT_DIR$/src/com/company/Data/file.txt" />
+        <option value="$PROJECT_DIR$/src/com/company/ActionListenersClass.java" />
+        <option value="$PROJECT_DIR$/src/com/company/AlgorithmClass.java" />
         <option value="$PROJECT_DIR$/src/com/company/InitializeClass.java" />
         <option value="$PROJECT_DIR$/src/com/company/DialogClass.java" />
-        <option value="$PROJECT_DIR$/src/com/company/ActionListenersClass.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Data/file.txt" />
-        <option value="$PROJECT_DIR$/src/com/company/AlgorithmClass.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
     <option name="y" value="30" />
-    <option name="width" value="1590" />
-    <option name="height" value="652" />
+    <option name="width" value="800" />
+    <option name="height" value="870" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -162,7 +169,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -195,12 +203,18 @@
               <item name="company" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="JavaCourse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaCourse" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="company" type="462c0819:PsiDirectoryNode" />
+              <item name="Icons" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -270,13 +284,14 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32894737" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25394738" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.15526316" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -286,15 +301,14 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4381579" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.28026316" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32894737" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32894737" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -302,7 +316,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="90" />
+      <option name="time" value="109" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -344,6 +358,10 @@
           <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2042#2043#0" expanded="true" />
+            <element signature="e#2062#2063#0" expanded="true" />
+            <element signature="e#2133#2134#0" expanded="true" />
+            <element signature="e#2185#2186#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -534,19 +552,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/DialogClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/AudioClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="248">
           <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -556,18 +564,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/ActionListenersClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+        <state relative-caret-position="259">
+          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/InitializeClass.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/AlgorithmClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+        <state relative-caret-position="293">
+          <caret line="259" column="53" lean-forward="true" selection-start-line="259" selection-start-column="53" selection-end-line="259" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -576,27 +584,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Data/file.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="105">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/AlgorithmClass.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/DialogClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1455">
-          <caret line="108" column="9" selection-start-line="108" selection-start-column="9" selection-end-line="108" selection-end-column="9" />
+        <state relative-caret-position="15">
+          <caret line="80" column="23" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/InitializeClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+        <state relative-caret-position="818">
+          <caret line="69" column="22" lean-forward="true" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2042#2043#0" expanded="true" />
+            <element signature="e#2062#2063#0" expanded="true" />
+            <element signature="e#2133#2134#0" expanded="true" />
+            <element signature="e#2185#2186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="112" column="10" selection-start-line="112" selection-start-column="10" selection-end-line="112" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#947#955#0" expanded="true" />
           </folding>
         </state>
       </provider>
