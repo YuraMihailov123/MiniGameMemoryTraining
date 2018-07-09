@@ -1,8 +1,7 @@
-father отец
-mother мать
-son  сын
-car машина
-football футбол
-onion лук
-bow лук
-entertainment развлечение
+один one
+два two
+три three
+четыре си
+пять five
+шесть six
+семь seven

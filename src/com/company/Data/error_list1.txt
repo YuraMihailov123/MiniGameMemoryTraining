@@ -1,5 +1,4 @@
-error ошибка
-bow лук
-onion лук
-son  сын
-son  сын
+два two
+два two
+шесть six
+четыре си

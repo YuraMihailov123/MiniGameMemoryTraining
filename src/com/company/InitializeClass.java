@@ -15,10 +15,6 @@ class InitializeClass {
             _buttons[i]=new JButton("");
             _buttons[i].setFocusPainted(false);
             _buttons[i].setFont(font);
-            //_buttons[i].setSize(_buttons[i].getPreferredSize());
-            //_buttons[i].setHorizontalTextPosition(JButton.LEFT);
-            //
-            //_buttons[i].setBounds(_buttons[i].getX(),_buttons[i].getY(),_buttons[i].getWidth(),_buttons[i].getHeight());
             _buttons[i].setBackground(Color.GREEN);
             _buttons[i].setEnabled(false);
             _buttons[i].setPreferredSize(new Dimension(_sizeSquare_x,_sizeSquare_y));
@@ -52,10 +48,13 @@ class InitializeClass {
         _isGaming=false;
         _startWithRandomisize=false;_isWon =false;
         _isRestatr=false;
+        _isSoundEnable=true;
+        _soundButton.setIcon(iconSoundOn);
         _score=0;
         _error=0;
         timerGame = new int[]{0, 0, 0};
-
+        _error_1.clear();
+        _error_2.clear();
         timer[0].stop();
         //timer2[0].stop();
         timer3[0].stop();
@@ -67,7 +66,7 @@ class CustomJToolTip extends JToolTip{
         super();
         setComponent(c);
         setBackground(Color.WHITE);
-        setForeground(Color.RED);
+        setForeground(Color.BLACK);
     }
 }
 

@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,6 +16,34 @@ import static com.company.ActionListenersClass.importWordsIntoGame;
 import static com.company.Main.*;
 
 class AlgorithmClass {
+
+    static void addErrorsToList(int index){
+
+        if (!_buttons[index].getText().equals("")) {
+            for (int i = 0; i < _baseLanguageWords.size(); i++) {
+                if(_baseLanguageWords.get(i).equals(_buttons[index].getText())){
+                    for (int j = 0; j < strs.size(); j++) {
+                        if (strs.get(j).contains(_baseLanguageWords.get(i))) {
+                            _error_1.add(strs.get(j));
+                            break;
+                        }
+
+                    }
+                    break;
+                }else if (_baseLanguageWordsNative.get(i).equals(_buttons[index].getText())) {
+                    for (int j = 0; j < strs.size(); j++) {
+                        if (strs.get(j).contains(_buttons[index].getText())) {
+                            _error_2.add(strs.get(j));
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+
+        }
+
+    }
 
     static void IfAllPairsLoaded(){
         boolean toClose=true;
@@ -191,6 +221,7 @@ class AlgorithmClass {
             _buttons[i].addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     if(_isGaming) {
+                        if(_isSoundEnable)
                         AudioClass.AudioClassCreateClick("click.wav");
 
                         if (!_isFirst) {
@@ -256,8 +287,9 @@ class AlgorithmClass {
                                 timer2[0] = new Timer(1000, backToDefaultColor);
                                 timer2[0].start();
 
-                                //AudioClass.AudioClassCreateClick("incorrect.wav");
                                 _errorLabel.setText(": "+ (++_error));
+                                addErrorsToList(_buttonPressedNumber);
+                                addErrorsToList(_buttonNumberBackToWhite);
                             }
                             _isFirst = !_isFirst;
                         } else if(_buttonPressedNumber==finalI){
