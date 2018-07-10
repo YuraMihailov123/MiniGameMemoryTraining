@@ -8,12 +8,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import static com.company.AlgorithmClass.*;
+import static com.company.InitializeClass.InitializeButtons;
 import static com.company.Main.*;
+import static com.company.Parser.DelParametres;
 
 class ActionListenersClass {
 
     static ActionListener soundMute = e -> {
-        if(_isSoundEnable) AudioClass.AudioClassCreateClick("click.wav");
+        if(!_isSoundEnable) AudioClass.AudioClassCreateClick("click.wav");
         _isSoundEnable=!_isSoundEnable;
         if(_isSoundEnable) _soundButton.setIcon(iconSoundOn);
         else _soundButton.setIcon(iconSoundOff);
@@ -39,12 +41,13 @@ class ActionListenersClass {
     static ActionListener delayBeforeLoad = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < _buttons.length; i++) {
-                _buttons[i].setEnabled(true);
-            }
-            _isGaming=true;
+            //for (int i = 0; i < _buttons.length; i++) {
+            //    _buttons[i].setEnabled(true);
+            //}
+
             BackToWhiteColor();
             RandomizeLocationButtons();
+
             CheckIfButtonEmpty();
 
             BaseLanguageWordsColoring();
@@ -75,11 +78,14 @@ class ActionListenersClass {
                 }
                 SetButtonsPairsText();
 
+                ActionButton();
+                for (int i = 0; i < _buttons.length; i++) {
+                    _buttons[i].setEnabled(true);
+                }
+                _isGaming=true;
                 if (_startWithRandomisize) {
-                    for (int i = 0; i < _buttons.length; i++) {
-                        _buttons[i].setEnabled(true);
-                    }
-                    _isGaming = true;
+
+                    //_isGaming = true;
                     RandomizeLocationButtons();
 
                     BaseLanguageWordsColoring();
@@ -87,6 +93,10 @@ class ActionListenersClass {
                     CheckIfButtonEmpty();
                     IfAllPairsLoaded();
                     if (!_isRestatr) {
+
+                        //font= new Font("Verdana", Font.PLAIN, 15);
+                        //g2.setFont(font);
+                        //if(finalI<_buttons.length/2-1)
                         timer3[0] = new Timer(1000, gameTimer);
                         timer3[0].start();
                         _isRestatr = !_isRestatr;
@@ -129,15 +139,27 @@ class ActionListenersClass {
 
     static ActionListener backToDefaultColor = e -> {
         for (int i = 0; i < _baseLanguageWords.size(); i++) {
-            if (_buttons[_buttonNumberBackToWhite].getText().equals(_baseLanguageWords.get(i)))
+            String a = _buttons[_buttonNumberBackToWhite].getText();
+            a = DelParametres(a);
+            String b = _buttons[_buttonNumberBackToWhite].getText();
+            b = DelParametres(b);
+            if (a.equals(_baseLanguageWords.get(i))) {
                 _buttons[_buttonNumberBackToWhite].setBackground(pale_blue);
-            else if  (_buttons[_buttonPressedNumber].getText().equals(_baseLanguageWords.get(i)))
+                _buttons[_buttonNumberBackToWhite].setForeground(pale_blue);
+            }
+            else if  (b.equals(_baseLanguageWords.get(i))) {
                 _buttons[_buttonPressedNumber].setBackground(pale_blue);
+                _buttons[_buttonPressedNumber].setForeground(pale_blue);
+            }
         }
-        if (_buttons[_buttonNumberBackToWhite].getBackground()== Color.RED)
+        if (_buttons[_buttonNumberBackToWhite].getBackground()== Color.RED) {
             _buttons[_buttonNumberBackToWhite].setBackground(Color.WHITE);
-        if (_buttons[_buttonPressedNumber].getBackground()== Color.RED)
+            _buttons[_buttonNumberBackToWhite].setForeground(Color.WHITE);
+        }
+        if (_buttons[_buttonPressedNumber].getBackground()== Color.RED) {
             _buttons[_buttonPressedNumber].setBackground(Color.WHITE);
+            _buttons[_buttonPressedNumber].setForeground(Color.WHITE);
+        }
         _isGaming=true;
         timer2[0].stop();
     };

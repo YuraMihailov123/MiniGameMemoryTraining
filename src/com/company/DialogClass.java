@@ -123,16 +123,16 @@ class DialogClass extends JDialog {
                         } catch (FileNotFoundException e1) {
                             System.out.println("File not found!");
                         }
-                        _buttons=new JButton[_size_x*_size_y];
+                        _buttons=new DrawButton[_size_x*_size_y];
                         //_pairs = new String[_size_x*_size_y/2];
                         panelButton=new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
                         panelButton.setPreferredSize(new Dimension(_size_x*_sizeSquare_x,_size_y*_sizeSquare_y));
                         int fontSize = 11+_sizeSquare_y/20;
                         font= new Font("Verdana", Font.PLAIN, fontSize);
-                        InitializeButtons();
+                        //InitializeButtons();
                         panelButton.revalidate();
                         panelButton.repaint();
-                        ActionButton();
+                        InitializeButtons();
                         //timer[0].stop();
                         timer[0] = new Timer(100, importWordsIntoGame);
                         timer[0].start();

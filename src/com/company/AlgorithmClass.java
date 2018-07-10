@@ -14,14 +14,19 @@ import java.util.Scanner;
 import static com.company.ActionListenersClass.backToDefaultColor;
 import static com.company.ActionListenersClass.importWordsIntoGame;
 import static com.company.Main.*;
+import static com.company.Parser.DelParametres;
+import static com.company.Parser.GetParametres;
 
 class AlgorithmClass {
+    static int INDEX;
 
     static void addErrorsToList(int index){
 
         if (!_buttons[index].getText().equals("")) {
             for (int i = 0; i < _baseLanguageWords.size(); i++) {
-                if(_baseLanguageWords.get(i).equals(_buttons[index].getText())){
+                String a = _buttons[index].getText();
+                a = DelParametres(a);
+                if(_baseLanguageWords.get(i).equals(a)){
                     for (int j = 0; j < strs.size(); j++) {
                         if (strs.get(j).contains(_baseLanguageWords.get(i))) {
                             _error_1.add(strs.get(j));
@@ -30,9 +35,9 @@ class AlgorithmClass {
 
                     }
                     break;
-                }else if (_baseLanguageWordsNative.get(i).equals(_buttons[index].getText())) {
+                }else if (_baseLanguageWordsNative.get(i).equals(a)) {
                     for (int j = 0; j < strs.size(); j++) {
-                        if (strs.get(j).contains(_buttons[index].getText())) {
+                        if (strs.get(j).contains(a)) {
                             _error_2.add(strs.get(j));
                             break;
                         }
@@ -73,7 +78,9 @@ class AlgorithmClass {
 
     static void CheckIfButtonEmpty(){
         for (int i = 0; i < _buttons.length; i++) {
-            if(_buttons[i].getText().equals("")){
+            String a = _buttons[i].getText();
+            a = DelParametres(a);
+            if(a.equals("")){
                 _buttons[i].setBackground(Color.GREEN);
                 _buttons[i].setEnabled(false);
 
@@ -110,13 +117,30 @@ class AlgorithmClass {
 
         String str="";
         if(scan.hasNextLine()) {
+            String tmp1,tmp2;
             str = scan.nextLine();
             //_pairs[_countPairs] = str;
+
             strs.add(str);
         }
         boolean ret = scan.hasNextLine();
         return ret;
 
+    }
+
+    static void DelParamFromList(){
+        for (int i = 0; i < strs.size(); i++) {
+            String tmp1,tmp2,str;
+            str = strs.get(i);
+            int temp = GetSpaceInString(str);
+            tmp1 = str.substring(0, temp);
+            tmp1 = DelParametres(tmp1);
+            tmp2 = str.substring(temp + 1);
+            tmp2 = DelParametres(tmp2);
+            str = tmp1 + " " + tmp2;
+            strs.remove(i);
+            strs.add(i,str);
+        }
     }
 
     static void SetButtonsPairsText(){
@@ -131,20 +155,30 @@ class AlgorithmClass {
                 temp2 = "";
                 int _temp = GetSpaceInString(str);
                 temp1 = str.substring(0, _temp);
-                _baseLanguageWords.add(temp1);
+                //temp1 = GetParametres(temp1);
                 _buttons[i].setText(temp1);
+                temp1= DelParametres(temp1);
+                _baseLanguageWords.add(temp1);
+
                 temp2 = str.substring(_temp + 1);
-                _baseLanguageWordsNative.add(temp2);
+                //temp2 = GetParametres(temp2);
                 _buttons[i + _buttons.length / 2].setText(temp2);
+                temp2= DelParametres(temp2);
+                _baseLanguageWordsNative.add(temp2);
                 _buttons[i].setBackground(Color.WHITE);
+                _buttons[i].setForeground(Color.WHITE);
                 _buttons[i + _buttons.length / 2].setBackground(Color.WHITE);
-
+                _buttons[i + _buttons.length / 2].setForeground(Color.WHITE);
+                fuckingDucking=true;
                 //AudioClass.AudioClassCreateClick("clickApper.wav");
-
+                test=true;
                 _countPairs++;
             }
-        }
-
+        }/*
+        for (int i = 0; i < _buttons.length; i++) {
+            _keysWord.add(_buttons[i].getText());
+        }*/
+        DelParamFromList();
     }
 
     static void ShuffleList(){
@@ -185,13 +219,21 @@ class AlgorithmClass {
             _buttons[i].setText(_buttons[num].getText());
             _buttons[num].setText(temp);
         }
+        /*_keysWord.clear();
+        for (int i = 0; i < _buttons.length; i++) {
+            _keysWord.add(_buttons[i].getText());
+        }*/
     }
 
     static void BaseLanguageWordsColoring(){
         for (int i = 0; i < _buttons.length; i++) {
+            String a = _buttons[i].getText();
+            a = DelParametres(a);
             for (int j = 0; j < _baseLanguageWords.size(); j++) {
-                if (_buttons[i].getText().equals(_baseLanguageWords.get(j)))
+
+                if (a.equals(_baseLanguageWords.get(j)))
                     _buttons[i].setBackground(pale_blue);
+                    _buttons[i].setForeground(pale_blue);
 
             }
         }
@@ -199,9 +241,13 @@ class AlgorithmClass {
 
     static void BaseLanguageWordsNativeColoring(){
         for (int i = 0; i < _buttons.length; i++) {
+            String a = _buttons[i].getText();
+            a = DelParametres(a);
             for (int j = 0; j < _baseLanguageWordsNative.size(); j++) {
-                if (_buttons[i].getText().equals(_baseLanguageWordsNative.get(j)))
+
+                if (a.equals(_baseLanguageWordsNative.get(j)))
                     _buttons[i].setBackground(Color.WHITE);
+                    _buttons[i].setForeground(Color.WHITE);
 
             }
         }
@@ -243,13 +289,18 @@ class AlgorithmClass {
                                 }
                             }
                             _buttons[finalI].setBackground(Color.YELLOW);
+                            System.out.println(_buttons[finalI].getText());
                             _buttons[_buttonPressedNumber].setEnabled(true);
                         } else if (_isFirst && _buttonPressedNumber != finalI ) {
                             _isEnabledUndo=true;
                             _undoButton.setEnabled(_isEnabledUndo);
-                            String temp1, temp2;
-                            temp1 = _buttons[finalI].getText() + " " + _buttons[_buttonPressedNumber].getText();
-                            temp2 = _buttons[_buttonPressedNumber].getText() + " " + _buttons[finalI].getText();
+                            String temp1, temp2,a,b;
+                            a =_buttons[finalI].getText();
+                            b =_buttons[_buttonPressedNumber].getText();
+                            a=DelParametres(a);
+                            b=DelParametres(b);
+                            temp1 = a + " " + b;
+                            temp2 = b+ " " + a;
                             _ifWas=false;
                             for (int j = 0; j < strs.size(); j++) {
                                 if (strs.get(j).equals(temp2) || strs.get(j).equals(temp1)) {
@@ -259,8 +310,13 @@ class AlgorithmClass {
                                         if(_buttons[i].getBackground()!=Color.GREEN)
                                         _buttons[i].setEnabled(true);
                                     }
-                                    _twoWords[0]=_buttons[finalI].getText();
-                                    _twoWords[1]=_buttons[_buttonPressedNumber].getText();
+                                    String x,y;
+                                    x = _buttons[finalI].getText();
+                                    y = _buttons[_buttonPressedNumber].getText();
+                                    //x = DelParametres(x);
+                                    //y=DelParametres(y);
+                                    _twoWords[0]=x;
+                                    _twoWords[1]=y;
                                     _buttons[finalI].setEnabled(false);
                                     _buttons[_buttonPressedNumber].setEnabled(false);
                                     _buttonNumberBackToWhite=finalI;
@@ -297,12 +353,18 @@ class AlgorithmClass {
                             //_undoButton.setEnabled(_isEnabledUndo);
                             boolean _isForeign=true;
                             for (int i = 0; i < _baseLanguageWords.size(); i++) {
-                                if (_buttons[finalI].getText().equals(_baseLanguageWords.get(i))) {
+                                String o = _buttons[finalI].getText();
+                                o=DelParametres(o);
+                                if (o.equals(_baseLanguageWords.get(i))) {
                                     _buttons[finalI].setBackground(pale_blue);
+                                    _buttons[finalI].setForeground(pale_blue);
                                     _isForeign=false;
                                 }
                             }
-                            if(_isForeign)_buttons[finalI].setBackground(Color.WHITE);
+                            if(_isForeign) {
+                                _buttons[finalI].setBackground(Color.WHITE);
+                                _buttons[finalI].setForeground(Color.WHITE);
+                            }
 
                             for (int i = 0; i < _buttons.length; i++) {
                                 if(_buttons[i].getBackground()!=Color.GREEN)

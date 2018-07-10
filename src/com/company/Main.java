@@ -7,21 +7,15 @@ import java.util.Scanner;
 import static com.company.ActionListenersClass.*;
 import static com.company.InitializeClass.*;
 
+    /*
+    -упр. послед-ти+++
+    -вкл\выкл звук+++
+    -убрал запятые+++
+    -активные кнокпи до перемешивание(бред, думаю настоять на том что это кал,иначе изи сделать)
+
+     */
 
 public class Main extends JFrame{
-    /*
-    -mute for sound+++
-    -путь до файла+++
-    -сохранить ошибки кнопкой после завершения урока+++
-    -загрузка со списков ошибок после завершения+++
-    -шрифт++(+-)
-    -перемешевание всех пар+++
-    -отмена действия с глубиной 1+++
-    -добавление иконок +++
-    -добавление всплывающего описания для иконок-кнопок+++
-    -справка по игре+++
-    -считывание с файла в формате utf-8+++
-    */
     static Main app;
     static Color pale_blue = new Color(174,204,235);
     static java.util.List<String> strs = new ArrayList<String>();
@@ -29,12 +23,13 @@ public class Main extends JFrame{
     static java.util.List<String> _baseLanguageWordsNative = new ArrayList<>();
     static java.util.List<String> _error_1 = new ArrayList<>();
     static java.util.List<String> _error_2 = new ArrayList<>();
+    static java.util.List<String> _colors = new ArrayList<>();
     static String[] _twoWords=new String[2];
     static JFrame _mainFrame;
     static int _buttonPressedNumber, _iterator =0,_countPairs=0, _buttonNumberBackToWhite;
     static boolean _isFirst =false,_isGaming=false,_startWithRandomisize=false, _isWon =false,_isRestatr=false,_isEnabledUndo=false,_isSoundEnable=true;
     static boolean _ifWas=false;
-    static boolean _canWeShuffle=true;
+    static boolean _canWeShuffle=true,fuckingDucking=false,test=false;
     static JLabel _timeLabel;
     static JLabel _emptyLabel;
     static JLabel _scoreLabel;
@@ -49,6 +44,7 @@ public class Main extends JFrame{
     static Scanner scan;
     static Container _container;
     static JPanel panelButton;
+    static JPanel panelInfo;
     static int[] timerGame = {0,0,0};
     static final Timer[] timer = new Timer[1];
     static final Timer[] timer2= new Timer[1];
@@ -56,13 +52,21 @@ public class Main extends JFrame{
     static Font font2,font;
     static ImageIcon iconSoundOn;
     static ImageIcon iconSoundOff;
-
+    static JPanel drawPanel;
+    static Graphics2D g2;
 
 
     public Main(){
         super("Программа для запоминания слов"); //Заголовок окна
         setResizable(false);
         _mainFrame=this;
+        //Graphics g = null;
+        //Paint(g);
+        drawPanel = new JPanel(){
+
+        };
+        //((JPanel) drawPanel).paintComponent();
+        //setContentPane(drawPanel);
         ImageIcon iconShuffle = new ImageIcon("src/com/company/Icons/shuffle.png");/////создание иконок для кнопок
         ImageIcon iconUndo = new ImageIcon("src/com/company/Icons/undo.png");
         ImageIcon iconSave = new ImageIcon("src/com/company/Icons/save1.png");
@@ -74,7 +78,7 @@ public class Main extends JFrame{
 
         setIconImage(icon.getImage());/////установление иконки приложения
 
-        JPanel panelInfo = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0)); /////создание панели для хранения кнопок
+        panelInfo = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0)); /////создание панели для хранения кнопок
         JPanel panelEmail = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));///// создание панели для хранения метки с авторской информацией
 
 
@@ -154,10 +158,13 @@ public class Main extends JFrame{
         panelInfo.add(_undoButton);
     }
 
+
+
     public static void main(String[] args) {
 
         app = new Main();/////создание окна
         app.setVisible(true);
+
 
     }
 
