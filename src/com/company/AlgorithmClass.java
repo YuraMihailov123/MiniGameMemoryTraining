@@ -4,12 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.File;
 import java.util.Random;
-import java.util.Scanner;
 
 import static com.company.ActionListenersClass.backToDefaultColor;
 import static com.company.ActionListenersClass.importWordsIntoGame;
@@ -18,7 +14,6 @@ import static com.company.Parser.DelParametres;
 import static com.company.Parser.GetParametres;
 
 class AlgorithmClass {
-    static int INDEX;
 
     static void addErrorsToList(int index){
 
@@ -28,7 +23,7 @@ class AlgorithmClass {
                 a = DelParametres(a);
                 if(_baseLanguageWords.get(i).equals(a)){
                     for (int j = 0; j < strs.size(); j++) {
-                        if (strs.get(j).contains(_baseLanguageWords.get(i))) {
+                        if (strs2.get(j).contains(_baseLanguageWords.get(i))) {
                             _error_1.add(strs.get(j));
                             break;
                         }
@@ -37,7 +32,7 @@ class AlgorithmClass {
                     break;
                 }else if (_baseLanguageWordsNative.get(i).equals(a)) {
                     for (int j = 0; j < strs.size(); j++) {
-                        if (strs.get(j).contains(a)) {
+                        if (strs2.get(j).contains(a)) {
                             _error_2.add(strs.get(j));
                             break;
                         }
@@ -58,6 +53,10 @@ class AlgorithmClass {
             }
         }
         if(toClose){
+            if(!_workingPath.equals("")){
+                File fileToDelete = new File(_workingPath+"/error_list_common.txt");
+                fileToDelete.delete();
+            }
             timer3[0].stop();
             DialogClass winDialog = new DialogClass(_mainFrame,!_isWon,"Результат");
             winDialog.setVisible(true);
@@ -96,7 +95,7 @@ class AlgorithmClass {
         if(count==_buttons.length) {
             _isWon=!_isWon;
             BackToWhiteColor();
-            System.out.println("You win!");
+            //System.out.println("You win!");
 
             //if(_isRestatr) {
                 timer[0] = new Timer(100, importWordsIntoGame);
@@ -120,7 +119,7 @@ class AlgorithmClass {
             String tmp1,tmp2;
             str = scan.nextLine();
             //_pairs[_countPairs] = str;
-
+            strs2.add(str);
             strs.add(str);
         }
         boolean ret = scan.hasNextLine();
@@ -129,17 +128,17 @@ class AlgorithmClass {
     }
 
     static void DelParamFromList(){
-        for (int i = 0; i < strs.size(); i++) {
+        for (int i = 0; i < strs2.size(); i++) {
             String tmp1,tmp2,str;
-            str = strs.get(i);
+            str = strs2.get(i);
             int temp = GetSpaceInString(str);
             tmp1 = str.substring(0, temp);
             tmp1 = DelParametres(tmp1);
             tmp2 = str.substring(temp + 1);
             tmp2 = DelParametres(tmp2);
             str = tmp1 + " " + tmp2;
-            strs.remove(i);
-            strs.add(i,str);
+            strs2.remove(i);
+            strs2.add(i,str);
         }
     }
 
@@ -267,8 +266,8 @@ class AlgorithmClass {
             _buttons[i].addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     if(_isGaming) {
-                        if(_isSoundEnable)
-                        AudioClass.AudioClassCreateClick("click.wav");
+                        //if(_isSoundEnable)
+                        //AudioClass.AudioClassCreateClick("click.wav");
 
                         if (!_isFirst) {
                             _isEnabledUndo=false;
@@ -289,7 +288,7 @@ class AlgorithmClass {
                                 }
                             }
                             _buttons[finalI].setBackground(Color.YELLOW);
-                            System.out.println(_buttons[finalI].getText());
+                            //System.out.println(_buttons[finalI].getText());
                             _buttons[_buttonPressedNumber].setEnabled(true);
                         } else if (_isFirst && _buttonPressedNumber != finalI ) {
                             _isEnabledUndo=true;
@@ -301,9 +300,10 @@ class AlgorithmClass {
                             b=DelParametres(b);
                             temp1 = a + " " + b;
                             temp2 = b+ " " + a;
+                            //IfAllPairsLoaded();
                             _ifWas=false;
-                            for (int j = 0; j < strs.size(); j++) {
-                                if (strs.get(j).equals(temp2) || strs.get(j).equals(temp1)) {
+                            for (int j = 0; j < strs2.size(); j++) {
+                                if (strs2.get(j).equals(temp2) || strs2.get(j).equals(temp1)) {
                                     _buttons[finalI].setBackground(Color.GREEN);
                                     _buttons[_buttonPressedNumber].setBackground(Color.GREEN);
                                     for (int i = 0; i < _buttons.length; i++) {
@@ -313,8 +313,10 @@ class AlgorithmClass {
                                     String x,y;
                                     x = _buttons[finalI].getText();
                                     y = _buttons[_buttonPressedNumber].getText();
-                                    //x = DelParametres(x);
-                                    //y=DelParametres(y);
+                                    _x=x;
+                                    _y=y;
+                                    x = DelParametres(x);
+                                    y=DelParametres(y);
                                     _twoWords[0]=x;
                                     _twoWords[1]=y;
                                     _buttons[finalI].setEnabled(false);

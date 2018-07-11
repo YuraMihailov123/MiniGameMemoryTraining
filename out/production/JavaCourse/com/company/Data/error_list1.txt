@@ -1,0 +1,6 @@
+cat кошка
+kitten кошка
+dog собака
+cat кошка
+dog собака
+kitten кошка

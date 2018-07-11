@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -15,7 +16,7 @@ import static com.company.Parser.DelParametres;
 class ActionListenersClass {
 
     static ActionListener soundMute = e -> {
-        if(!_isSoundEnable) AudioClass.AudioClassCreateClick("click.wav");
+        if(!_isSoundEnable) //AudioClass.AudioClassCreateClick("click.wav");
         _isSoundEnable=!_isSoundEnable;
         if(_isSoundEnable) _soundButton.setIcon(iconSoundOn);
         else _soundButton.setIcon(iconSoundOff);
@@ -27,8 +28,8 @@ class ActionListenersClass {
                 _scoreLabel.setText(": " + (--_score));
                 UndoVoid(_buttonPressedNumber,_twoWords[1]);
                 UndoVoid(_buttonNumberBackToWhite,_twoWords[0]);
-                _buttons[_buttonPressedNumber].setText(_twoWords[1]);
-                _buttons[_buttonNumberBackToWhite].setText(_twoWords[0]);
+                _buttons[_buttonPressedNumber].setText(_y);
+                _buttons[_buttonNumberBackToWhite].setText(_x);
                 _buttons[_buttonNumberBackToWhite].setEnabled(true);
                 _buttons[_buttonPressedNumber].setEnabled(true);
             }
@@ -41,19 +42,18 @@ class ActionListenersClass {
     static ActionListener delayBeforeLoad = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            //for (int i = 0; i < _buttons.length; i++) {
-            //    _buttons[i].setEnabled(true);
-            //}
-
+            for (int i = 0; i < _buttons.length; i++) {
+                _buttons[i].setEnabled(true);
+            }
+            _gameButton.setEnabled(false);
             BackToWhiteColor();
             RandomizeLocationButtons();
-
+            _isGaming=true;
             CheckIfButtonEmpty();
 
             BaseLanguageWordsColoring();
             if(!_isRestatr) {
-                timer3[0] = new Timer(1000, gameTimer);
-                timer3[0].start();
+
                 _isRestatr=!_isRestatr;
             }
         }
@@ -62,29 +62,35 @@ class ActionListenersClass {
     static ActionListener importWordsIntoGame = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(_isWon) {
-                _iterator = 0;
+            //if(_isWon) {
+                //iterator = 0;
                 //_isWon=!_isWon;
-            }
-            System.out.println("---"+_iterator);
+            //}
+            _gameButton.setEnabled(true);
+            //System.out.println("---"+_iterator);
             if(GetPairsAndDivideThem() ) {
-                System.out.println("done it");
+                //System.out.println("done it");
 
             }else {
                 timer[0].stop();
                 if(_canWeShuffle) {
                     ShuffleList();
+                    ActionButton();
                     _canWeShuffle=!_canWeShuffle;
                 }
                 SetButtonsPairsText();
 
-                ActionButton();
+
+
                 for (int i = 0; i < _buttons.length; i++) {
                     _buttons[i].setEnabled(true);
                 }
+                //BaseLanguageWordsColoring();
+                //BaseLanguageWordsNativeColoring();
+                //CheckIfButtonEmpty();
+                //
                 _isGaming=true;
                 if (_startWithRandomisize) {
-
                     //_isGaming = true;
                     RandomizeLocationButtons();
 
@@ -102,10 +108,15 @@ class ActionListenersClass {
                         _isRestatr = !_isRestatr;
                     }
                 } else {
+                    //for (int i = 0; i < _buttons.length; i++) {
+                    //    _buttons[i].setEnabled(false);
+                    //}
                     BaseLanguageWordsColoring();
                     BaseLanguageWordsNativeColoring();
                     CheckIfButtonEmpty();
                     IfAllPairsLoaded();
+                    timer3[0] = new Timer(1000, gameTimer);
+                    timer3[0].start();
                     //timer4[0]= new Timer(20000,delayBeforeLoad);
                     //timer4[0].start();
                 }
@@ -129,6 +140,8 @@ class ActionListenersClass {
                         outfile2.flush();
 
                     }
+                 //File file=new File("src/com/company/Data/error_list3.txt");
+                 //   file.delete();
                 _error_1.clear();
                 _error_2.clear();
             }
@@ -141,7 +154,7 @@ class ActionListenersClass {
         for (int i = 0; i < _baseLanguageWords.size(); i++) {
             String a = _buttons[_buttonNumberBackToWhite].getText();
             a = DelParametres(a);
-            String b = _buttons[_buttonNumberBackToWhite].getText();
+            String b = _buttons[_buttonPressedNumber].getText();
             b = DelParametres(b);
             if (a.equals(_baseLanguageWords.get(i))) {
                 _buttons[_buttonNumberBackToWhite].setBackground(pale_blue);

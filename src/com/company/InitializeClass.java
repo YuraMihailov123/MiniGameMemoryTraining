@@ -6,6 +6,7 @@ import java.awt.*;
 import static com.company.InitializeClass.*;
 
 import static com.company.Main.*;
+import static com.company.Parser.DelParametres;
 import static com.company.Parser.GetParametres;
 
 class DrawButton extends JButton {
@@ -16,36 +17,50 @@ class DrawButton extends JButton {
         setText(text);
 
     }
-
-    public void setG2D(Graphics g){
-        Graphics2D _g=(Graphics2D)g;
-        g2=_g;
-    }
+    @Override
     public void paintComponent(Graphics g){
 
         super.paintComponent(g);
 
         g2=(Graphics2D)g;
         g2.setColor(Color.BLACK);
-        //g2.setFont(font_2);
+        String write="";
+        String butText=this.getText();
+        String text=this.getText();
+        text=DelParametres(text);
+        colorToColor = Color.black;
         if(test) {
-        //write_2+=write_;
-            String c;// = this.getText();
+            while (!write.equals(text)) {
+                String c;
+                c = GetParametres(butText);
+
+                StringBuffer buff = new StringBuffer(butText);
+                buff.delete(0, i_gr+1);
+                butText = buff.toString();
+
+                write+=c;
+                Font font_2 = new Font("Verdana", Font.PLAIN, height);
+                g2.setFont(font_2);
+                g2.setColor(colorToColor);
+                g2.drawString(c, (_sizeSquare_y - height) / 3, _sizeSquare_y - (_sizeSquare_y - height) / 2);
+                height = _sizeSquare_y;
+                //
+            }
+
+        }
+        /*if(test) {
+
+            String c;
             c=GetParametres(this.getText());
             Font font_2 = new Font("Verdana",Font.PLAIN,height);
             g2.setFont(font_2);
             g2.setColor(colorToColor);
-            //this.setText(c);
-            g2.drawString(c, _sizeSquare_x / 2 - 33,_sizeSquare_y / 2+8);
+            g2.drawString(c, (_sizeSquare_y-height)/3,_sizeSquare_y-(_sizeSquare_y-height)/2);
             height=_sizeSquare_y;
             colorToColor=Color.black;
-            //test=false;
-            i++;
-            //test=false;
-        }
-        //if(fuckingDucking) {
-        //    g2.drawString(this.getText(), _sizeSquare_x / 2 - 30, _sizeSquare_y / 2);
-        //}
+
+        }*/
+
 
     }
 }
@@ -55,7 +70,7 @@ class InitializeClass {
     //////////////////////////////
     static String str_2="";
     static Color colorToColor;
-    static int width=_sizeSquare_x,height=_sizeSquare_y;
+    static int width=_sizeSquare_x,height=_sizeSquare_y-1;
     ////////////////
 
 
@@ -69,8 +84,13 @@ class InitializeClass {
             //g_2.drawString("Hello",22,22);
             int finalI = i;
             _buttons[i]=new DrawButton("");
+            _labels[i]=new JLabel();
             _buttons[i].setFocusPainted(false);
             _buttons[i].setFont(font_);
+            _buttons[i].setLayout(new GridLayout(2,1));
+            _labels[i].setForeground(Color.MAGENTA);
+            _buttons[i].add(_labels[i]);
+
             _buttons[i].setBackground(Color.GREEN);
             _buttons[i].setEnabled(false);
             _buttons[i].setPreferredSize(new Dimension(_sizeSquare_x,_sizeSquare_y));
@@ -79,12 +99,6 @@ class InitializeClass {
             }
     }
 
-    static JButton JButton(JButton button,String text,int size_x,int size_y){
-        button = new JButton(text);
-        button.setPreferredSize(new Dimension(size_x,size_y));
-        button.setBackground(Color.WHITE);
-        return button;
-    }
 
     static JLabel JLabel(JLabel label, String text, int alignment, int size_x, int size_y ){
         label = new JLabel(text);
@@ -97,7 +111,7 @@ class InitializeClass {
         _sizeSquare_y=0;
         _size_x=0;
         _size_y=0;
-        _iterator =0;
+        //_iterator =0;
         _countPairs=0;
         _canWeShuffle=true;
         _isFirst =false;
@@ -106,7 +120,7 @@ class InitializeClass {
         _startWithRandomisize=false;_isWon =false;
         _isRestatr=false;
         _isSoundEnable=true;
-        _soundButton.setIcon(iconSoundOn);
+        //_soundButton.setIcon(iconSoundOn);
         _score=0;
         _error=0;
         timerGame = new int[]{0, 0, 0};

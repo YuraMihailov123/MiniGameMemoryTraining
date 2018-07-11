@@ -19,15 +19,16 @@ public class Main extends JFrame{
     static Main app;
     static Color pale_blue = new Color(174,204,235);
     static java.util.List<String> strs = new ArrayList<String>();
+    static java.util.List<String> strs2 = new ArrayList<String>();
     static java.util.List<String> _baseLanguageWords = new ArrayList<>();
     static java.util.List<String> _baseLanguageWordsNative = new ArrayList<>();
     static java.util.List<String> _error_1 = new ArrayList<>();
     static java.util.List<String> _error_2 = new ArrayList<>();
-    static java.util.List<String> _colors = new ArrayList<>();
+    //static java.util.List<String> _colors = new ArrayList<>();
     static String[] _twoWords=new String[2];
     static JFrame _mainFrame;
-    static int _buttonPressedNumber, _iterator =0,_countPairs=0, _buttonNumberBackToWhite;
-    static boolean _isFirst =false,_isGaming=false,_startWithRandomisize=false, _isWon =false,_isRestatr=false,_isEnabledUndo=false,_isSoundEnable=true;
+    static int _buttonPressedNumber, _countPairs=0, _buttonNumberBackToWhite;
+    static boolean _isFirst =false,_isGaming=false,_startWithRandomisize=false, _isWon =false,_isRestatr=false,_isEnabledUndo=false,_isSoundEnable=false;
     static boolean _ifWas=false;
     static boolean _canWeShuffle=true,fuckingDucking=false,test=false;
     static JLabel _timeLabel;
@@ -36,11 +37,13 @@ public class Main extends JFrame{
     static JLabel _errorLabel;
     static int _size_x,_size_y,_sizeSquare_x,_sizeSquare_y;
     static JButton[] _buttons;
+    static JLabel[] _labels;
     static JButton _gameButton, _saveErrors,_undoButton,_soundButton;
     static int _score=0,_error=0;
     static InputStreamReader rf;
     static FileWriter outfile1;
     static FileWriter outfile2;
+    static FileWriter outfile3;
     static Scanner scan;
     static Container _container;
     static JPanel panelButton;
@@ -49,12 +52,16 @@ public class Main extends JFrame{
     static final Timer[] timer = new Timer[1];
     static final Timer[] timer2= new Timer[1];
     static final Timer[] timer3 = new Timer[1];
-    static Font font2,font;
+    static Font font;
     static ImageIcon iconSoundOn;
     static ImageIcon iconSoundOff;
     static JPanel drawPanel;
     static Graphics2D g2;
-
+    static String _workingPath="";
+    static String _path="";
+    static String _x,_y;
+    static int i_gr;
+    //static int rem;
 
     public Main(){
         super("Программа для запоминания слов"); //Заголовок окна
@@ -67,14 +74,15 @@ public class Main extends JFrame{
         };
         //((JPanel) drawPanel).paintComponent();
         //setContentPane(drawPanel);
-        ImageIcon iconShuffle = new ImageIcon("src/com/company/Icons/shuffle.png");/////создание иконок для кнопок
-        ImageIcon iconUndo = new ImageIcon("src/com/company/Icons/undo.png");
-        ImageIcon iconSave = new ImageIcon("src/com/company/Icons/save1.png");
-        ImageIcon iconCheck = new ImageIcon("src/com/company/Icons/check.png");
-        ImageIcon iconError = new ImageIcon("src/com/company/Icons/error.png");
-        ImageIcon icon = new ImageIcon("src/com/company/Icons/iconGame.png");
-        iconSoundOn = new ImageIcon("src/com/company/Icons/on2.png");
-        iconSoundOff = new ImageIcon("src/com/company/Icons/off.png");
+        ImageIcon iconShuffle = new ImageIcon(Main.class.getResource("/com/company/Icons/shuffle.png"));/////создание иконок для кнопок
+        ImageIcon iconUndo = new ImageIcon(Main.class.getResource("/com/company/Icons/undo.png"));
+        ImageIcon iconSave = new ImageIcon(Main.class.getResource("/com/company/Icons/save1.png"));
+        ImageIcon iconCheck = new ImageIcon(Main.class.getResource("/com/company/Icons/check.png"));
+
+        ImageIcon iconError = new ImageIcon(Main.class.getResource("/com/company/Icons/error.png"));
+        ImageIcon icon = new ImageIcon(Main.class.getResource("/com/company/Icons/iconGame.png"));
+        iconSoundOn = new ImageIcon(Main.class.getResource("/com/company/Icons/on2.png"));
+        iconSoundOff = new ImageIcon(Main.class.getResource("/com/company/Icons/off.png"));
 
         setIconImage(icon.getImage());/////установление иконки приложения
 
@@ -110,7 +118,7 @@ public class Main extends JFrame{
         panelInfo.add(_errorLabel);/////добавление на панель метки ошибок
         panelInfo.add(_timeLabel);/////добавление на панель метки времени
         panelEmail.add(_emptyLabel);/////добавление на панель метки с авторской информацией
-        panelEmail.add(_soundButton);/////добавление на панель кнопки управления звуком
+        //panelEmail.add(_soundButton);/////добавление на панель кнопки управления звуком
         _container.add(panelInfo);/////добавление компоненто контейнера
         _container.add(panelButton);
         _container.add(panelEmail);
@@ -128,7 +136,7 @@ public class Main extends JFrame{
         _gameButton.addActionListener(delayBeforeLoad);
         panelInfo.add(_gameButton);
 
-        _soundButton = new MyBytton("");/////кнопка управления звуком
+        /*_soundButton = new MyBytton("");/////кнопка управления звуком
         _soundButton.setBackground(Color.WHITE);
         _soundButton.setPreferredSize(new Dimension(30,30));
         //_soundButton.setFont(font);
@@ -136,7 +144,7 @@ public class Main extends JFrame{
         _soundButton.setToolTipText("Вкл/Выкл звук");
         _soundButton.setFocusPainted(false);
         _soundButton.addActionListener(soundMute);
-
+        */
         _saveErrors = new MyBytton("");/////кнопка сохранения ошибок
         _saveErrors.setBackground(Color.WHITE);
         _saveErrors.setPreferredSize(new Dimension(30,30));
