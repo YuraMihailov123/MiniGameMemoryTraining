@@ -6,8 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.Scanner;
 
-import static com.company.ActionListenersClass.addPairsToErrorLists;
-import static com.company.ActionListenersClass.importWordsIntoGame;
+import static com.company.ActionListenersClass.*;
 import static com.company.AlgorithmClass.ActionButton;
 import static com.company.InitializeClass.*;
 import static com.company.Main.*;
@@ -18,7 +17,7 @@ class DialogClass extends JDialog {
     JDialog thisFrame;
     public DialogClass(JFrame owner,boolean isWon,String str){
         super(owner,str,true);
-        setBounds(700,200,260,200);
+        setBounds(700,200,260,230);
         thisFrame=this;
         if(!isWon) {
             //setResizable(false);
@@ -143,7 +142,7 @@ class DialogClass extends JDialog {
                         panelButton.repaint();
                         InitializeButtons();
                         //timer[0].stop();
-                        timer[0] = new Timer(100, importWordsIntoGame);
+                        timer[0] = new Timer(100, importWordsIntoGameFromFile);
                         timer[0].start();
                         setVisible(false);
                     }
@@ -169,6 +168,7 @@ class DialogClass extends JDialog {
         }else {
             JPanel panel = new JPanel();
             JPanel panel2 = new JPanel();
+            JCheckBox checkPerep = new JCheckBox();
             JButton _restart = new JButton("Начать заново");
             JButton _saveErr = new JButton("Сохранить ошибки");
             JButton err1,err2,errCom;
@@ -199,8 +199,8 @@ class DialogClass extends JDialog {
                     try {
                         //if(_error>0) {
 
-                            outfile1 = new FileWriter(_workingPath+"/error_list1.txt", true);
-                            outfile2 = new FileWriter(_workingPath+"/error_list2.txt", true);
+                            outfile1 = new FileWriter(_workingPath+"/error_list1.txt", !checkPerep.isSelected());
+                            outfile2 = new FileWriter(_workingPath+"/error_list2.txt", !checkPerep.isSelected());
                             outfile3 = new FileWriter(_workingPath+"/error_list_common.txt", true);
 
                             for (int i = 0; i < _error_1.size(); i++) {
@@ -243,7 +243,7 @@ class DialogClass extends JDialog {
             err1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    _path=_workingPath+"/error_list1.txt";
+                    _path = _workingPath+"/error_list1.txt";
                     app.dispose();
                     DeleteData();
                     app =new Main();
@@ -253,7 +253,7 @@ class DialogClass extends JDialog {
             err2.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    _path=_workingPath+"/error_list2.txt";
+                    _path = _workingPath+"/error_list2.txt";
                     app.dispose();
                     DeleteData();
                     app =new Main();
@@ -263,7 +263,7 @@ class DialogClass extends JDialog {
             errCom.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    _path=_workingPath+"/error_list_common.txt";
+                    _path = _workingPath+"/error_list_common.txt";
                     app.dispose();
                     DeleteData();
                     app =new Main();
@@ -271,11 +271,13 @@ class DialogClass extends JDialog {
                 }
             });
             panel.add(new JLabel("Урок завершен!"));
-            panel.add(new JLabel("Загрузить урок с файла ошибок:          "));
+            panel.add(new JLabel("Загрузить урок со списка ошибок:          "));
             panel.add(err1);
             panel.add(err2);
             panel.add(errCom);
-            panel2.setLayout(new GridLayout(2,1));
+            panel2.setLayout(new GridLayout(3,1));
+            panel2.add(new JLabel("Перезаписать файл ?"));
+            panel2.add(checkPerep);
             panel2.add(_saveErr);
             panel2.add(_restart);
             add(panel,BorderLayout.CENTER);
@@ -291,6 +293,11 @@ class DialogClass extends JDialog {
             };
             _restart.addActionListener(_newGame);
         }
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        //try {
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //}
+        //catch (NullPointerException e){
+        //    e.getMessage();
+        //}
     }
 }

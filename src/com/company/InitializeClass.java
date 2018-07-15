@@ -6,8 +6,8 @@ import java.awt.*;
 import static com.company.InitializeClass.*;
 
 import static com.company.Main.*;
-import static com.company.Parser.DelParametres;
-import static com.company.Parser.GetParametres;
+import static com.company.Parser.*;
+//import static com.company.Parser.GetSubstrSize;
 
 class DrawButton extends JButton {
     static int i=0;
@@ -25,26 +25,65 @@ class DrawButton extends JButton {
         g2=(Graphics2D)g;
         g2.setColor(Color.BLACK);
         String write="";
-        String butText=this.getText();
+        String prev="";
+        butText=this.getText();
         String text=this.getText();
         text=DelParametres(text);
         colorToColor = Color.black;
+        boolean fir=true;
+        height = _sizeSquare_y;
+        //boolean changeLocation=false;
+        coordX=0;
+        cord_y = 0;//g2.getFontMetrics().getHeight();
+        heightTooffset=_sizeSquare_y-1;
         if(test) {
             while (!write.equals(text)) {
+
                 String c;
                 c = GetParametres(butText);
+
+
+                //GetSubstrSize(butText);
+                /*if(!ifTwoSlashes) {
+                    cord_y += heightTooffset;
+                    ifTwoSlashes=true;
+                }*/
+                if(fir){
+                    if(CheckSlashes(this.getText())){
+                        cord_y=GetSizeFont(this.getText());
+                    }
+                    fir=false;
+                }
+
+                if(!CheckSlashes(this.getText())){
+                    cord_y=0;
+                    cord_y=GetSizeFont(this.getText());
+                }
+
+                if(!changeLocation) {
+                    coordX=0;
+                    changeLocation=true;
+
+                }
+                else {
+
+                    coordX += g2.getFontMetrics().stringWidth(prev);
+                }
 
                 StringBuffer buff = new StringBuffer(butText);
                 buff.delete(0, i_gr+1);
                 butText = buff.toString();
-
                 write+=c;
-                Font font_2 = new Font("Verdana", Font.PLAIN, height);
+                Font font_2 = new Font("MS Gothic", Font.PLAIN, height);
                 g2.setFont(font_2);
+                //System.out.println(heightTooffset);
+                //System.out.println(cord_y);
+                //System.out.println(prev+"-"+g2.getFontMetrics().stringWidth(prev));
                 g2.setColor(colorToColor);
-                g2.drawString(c, (_sizeSquare_y - height) / 3, _sizeSquare_y - (_sizeSquare_y - height) / 2);
-                height = _sizeSquare_y;
-                //
+                g2.drawString(c,  coordX, cord_y);
+                //heightTooffset=0;
+                //cord_y = g2.getFontMetrics().getHeight();
+                prev=c;
             }
 
         }

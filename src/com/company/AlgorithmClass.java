@@ -8,7 +8,7 @@ import java.io.File;
 import java.util.Random;
 
 import static com.company.ActionListenersClass.backToDefaultColor;
-import static com.company.ActionListenersClass.importWordsIntoGame;
+import static com.company.ActionListenersClass.importWordsIntoGameFromFile;
 import static com.company.Main.*;
 import static com.company.Parser.DelParametres;
 import static com.company.Parser.GetParametres;
@@ -98,7 +98,7 @@ class AlgorithmClass {
             //System.out.println("You win!");
 
             //if(_isRestatr) {
-                timer[0] = new Timer(100, importWordsIntoGame);
+                timer[0] = new Timer(100, importWordsIntoGameFromFile);
                 timer[0].start();
                 _undoButton.setEnabled(false);
                 _isEnabledUndo=false;
@@ -118,8 +118,7 @@ class AlgorithmClass {
         if(scan.hasNextLine()) {
             String tmp1,tmp2;
             str = scan.nextLine();
-            //_pairs[_countPairs] = str;
-            strs2.add(str);
+
             strs.add(str);
         }
         boolean ret = scan.hasNextLine();
@@ -199,10 +198,14 @@ class AlgorithmClass {
     }
 
     private static int GetSpaceInString(String str){
+        int countTabs=0;
         for (int i = 0; i < str.length(); i++) {
-            if(str.charAt(i)==' '){
+            if(str.charAt(i)=='\u0009'){// && str.charAt(i+1)!=' '){
                 return i;
             }
+            //if(countTabs>1){
+            //    return i;
+            //}
         }
         return 0;
     }

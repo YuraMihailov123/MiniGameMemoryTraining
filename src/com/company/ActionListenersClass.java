@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import static com.company.AlgorithmClass.*;
+import static com.company.InitializeClass.DeleteData;
 import static com.company.InitializeClass.InitializeButtons;
 import static com.company.Main.*;
 import static com.company.Parser.DelParametres;
@@ -59,7 +60,8 @@ class ActionListenersClass {
         }
     };
 
-    static ActionListener importWordsIntoGame = new ActionListener() {
+
+    static ActionListener importWordsIntoGameFromFile = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             //if(_isWon) {
@@ -75,6 +77,9 @@ class ActionListenersClass {
                 timer[0].stop();
                 if(_canWeShuffle) {
                     ShuffleList();
+                    for (int i = 0; i < strs.size(); i++) {
+                        strs2.add(strs.get(i));
+                    }
                     ActionButton();
                     _canWeShuffle=!_canWeShuffle;
                 }
@@ -125,11 +130,12 @@ class ActionListenersClass {
 
     };
 
+
     static ActionListener addPairsToErrorLists = e -> {
-        try {
+        //try {
             if(_error>0) {
 
-                outfile1 = new FileWriter("src/com/company/Data/error_list1.txt", true);
+                /*outfile1 = new FileWriter("src/com/company/Data/error_list1.txt", true);
                 outfile2 = new FileWriter("src/com/company/Data/error_list2.txt", true);
 
                     for (int i = 0; i < _error_1.size(); i++) {
@@ -143,11 +149,12 @@ class ActionListenersClass {
                  //File file=new File("src/com/company/Data/error_list3.txt");
                  //   file.delete();
                 _error_1.clear();
-                _error_2.clear();
+                _error_2.clear();*/
+
             }
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
+        //} catch (IOException e1) {
+        //    e1.printStackTrace();
+        //}
     };
 
     static ActionListener backToDefaultColor = e -> {

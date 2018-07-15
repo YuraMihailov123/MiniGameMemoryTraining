@@ -1,6 +1,8 @@
 package com.company;
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -61,7 +63,11 @@ public class Main extends JFrame{
     static String _path="";
     static String _x,_y;
     static int i_gr;
-    //static int rem;
+    static int coordX=0, cord_y=0;
+    static boolean changeLocation=false;
+    static int heightTooffset=0;
+    static boolean ifTwoSlashes=false;
+    static String butText;
 
     public Main(){
         super("Программа для запоминания слов"); //Заголовок окна
@@ -152,7 +158,47 @@ public class Main extends JFrame{
         _saveErrors.setIcon(iconSave);
         _saveErrors.setToolTipText("Сохранить ошибки");
         _saveErrors.setFocusPainted(false);
-        _saveErrors.addActionListener(addPairsToErrorLists);
+        _saveErrors.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                File file;
+                JFileChooser fileopen = new JFileChooser();
+                fileopen.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                fileopen.setCurrentDirectory(new File("/src/company"));
+                int ret = fileopen.showDialog(null, "Указать директорию");
+                if (ret == JFileChooser.APPROVE_OPTION){
+                    file = fileopen.getSelectedFile();
+                    System.out.println(file.getPath());
+                    _workingPath=file.getPath();
+                }
+                try {
+                    if(_error>0) {
+
+                        outfile1 = new FileWriter(_workingPath + "/error_list1.txt", true);
+                        outfile2 = new FileWriter(_workingPath + "/error_list2.txt", true);
+                        //outfile3 = new FileWriter(_workingPath+"/error_list_common.txt", true);
+
+                        for (int i = 0; i < _error_1.size(); i++) {
+                            outfile1.write(_error_1.get(i) + "\n");
+                            outfile1.flush();
+
+                            //outfile3.write(_error_1.get(i)+"\n");
+                            //outfile3.flush();
+
+                            outfile2.write(_error_2.get(i) + "\n");
+                            outfile2.flush();
+
+                            //outfile3.write(_error_2.get(i)+"\n");
+                            //outfile3.flush();
+
+                        }
+                    }
+
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
         panelInfo.add(_saveErrors);
 
         _undoButton = new MyBytton("");/////кнопка отмены последнего действия
@@ -169,9 +215,13 @@ public class Main extends JFrame{
 
 
     public static void main(String[] args) {
-
-        app = new Main();/////создание окна
-        app.setVisible(true);
+        try {
+            app = new Main();/////создание окна
+            app.setVisible(true);
+        }
+        catch (NullPointerException e){
+            System.exit(999);
+        }
 
 
     }
